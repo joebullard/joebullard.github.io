@@ -1,0 +1,47 @@
+.App {
+  font-family: Arial, sans-serif;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.filter-container {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+
+th:hover {
+  background-color: #ddd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+select {
+  padding: 5px;
+}
+
+option {
+  padding: 5px;
+}
