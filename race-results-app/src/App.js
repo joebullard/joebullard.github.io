@@ -151,11 +151,13 @@ const prefectureMapping = {
 
 function App() {
   const [data, setData] = useState(raceData);
-  const [filteredData, setFilteredData] = useState(raceData);
+  const [filteredData, setFilteredData] = useState([]);
   const [sortConfig, setSortConfig] = useState({ key: 'date', direction: 'ascending' });
 
   useEffect(() => {
-    setFilteredData(data);
+    // Initially set filteredData to sorted data by date ascending
+    const sortedData = [...data].sort((a, b) => new Date(a.date) - new Date(b.date));
+    setFilteredData(sortedData);
   }, [data]);
 
   const sortTable = (key) => {
@@ -167,10 +169,8 @@ function App() {
 
     const sortedData = [...filteredData].sort((a, b) => {
       if (key === 'date') {
-        // Handle date sorting
         return (new Date(a[key]) - new Date(b[key])) * (direction === 'ascending' ? 1 : -1);
       } else {
-        // Default alphanumeric sorting
         return (a[key] < b[key] ? -1 : a[key] > b[key] ? 1 : 0) * (direction === 'ascending' ? 1 : -1);
       }
     });
