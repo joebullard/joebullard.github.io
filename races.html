@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>nCoV Japan Map</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script type="text/javascript" src="https://unpkg.com/japan-map-js@1.0.1/dist/jpmap.min.js"></script>
+  <style>
+    body {
+      background-color: #222222
+    }
+
+    #tooltip {
+      color: #222222; 
+      background-color: #ffdd00;
+      padding: 5px;
+      text-decoration:none;
+      position:relative;
+      display:none;
+    }
+  </style>
+</head>
+<body>
+  <span id="text" style="display:inline-block; width: 1002px; color: #FFFFFF; background-color: #FFFFFF; text-align: center">令和2年2月15日版</span>
+  <span id="tooltip"></span>
+  <div id="my-map"></div>
+  <script>
+    function scale(xMax, xMin, yMax, yMin, yInput) {
+      percent = (yInput - yMin) / (yMax - yMin);
+      return percent * (xMax - xMin) + xMin;
+    }
+
+    // function getColorCode(target) {
+    //   const c = Math.round(255.0 - scale(0,255,0,20,target)).toString(16).padStart(2, "0");
+    //   return "#FF" + c + c;
+    // }
+
+    var tooltipSpan = document.getElementById('tooltip');
+    window.onmousemove = function (e) {
+        var x = e.clientX, y = e.clientY;
+        tooltipSpan.style.top = (y + 16) + 'px';
+        tooltipSpan.style.left = (x + 16) + 'px';
+    };
+
+    function countToColor(count) {
+      return count > 0 ? "#00CC55" : "#FFFFFF";
+    }
+
+    const ISLANDS = [
+      "_HOKKAIDO_",
+      "_HONSU_",
+      "_SHIKOKU_",
+      "_KYUSHU_AND_OKINAWA_",
+    ];
+
+    const REGIONS = [
+      "_HOKKAIDO_",
+      "_TOHOKU_",
+      "_KANTO_",
+      "_CHUBU_",
+      "_KANSAI_",
+      "_CHUGOKU_",
+      "_SHIKOKU_",
+      "_KYUSHU_AND_OKINAWA_",
+    ];
+
+    const PREFECTURES = [
+      "_HOKKAIDO_",
+      "_AOMORI_",
+      "_IWATE_",
+      "_MIYAGI_",
+      "_AKITA_",
+      "_YAMAGATA_",
+      "_FUKUSHIMA_",
+      "_IBARAKI_",
+      "_TOCHIGI_",
+      "_GUNMA_",
+      "_SAITAMA_",
+      "_CHIBA_",
+      "_TOKYO_",
+      "_KANAGAWA_",
+      "_NIIGATA_",
+      "_TOYAMA_",
+      "_ISHIKAWA_",
+      "_FUKUI_",
+      "_YAMANASHI_",
+      "_NAGANO_",
+      "_GIFU_",
+      "_SHIZUOKA_",
+      "_AICHI_",
+      "_MIE_",
+      "_SHIGA_",
+      "_KYOTO_",
+      "_OSAKA_",
+      "_HYOGO_",
+      "_NARA_",
+      "_WAKAYAMA_",
+      "_TOTTORI_",
+      "_SHIMANE_",
+      "_OKAYAMA_",
+      "_HIROSHIMA_",
+      "_YAMAGUCHI_",
+      "_TOKUSHIMA_",
+      "_KAGAWA_",
+      "_EHIME_",
+      "_KOCHI_",
+      "_FUKUOKA_",
+      "_SAGA_",
+      "_NAGASAKI_",
+      "_KUMAMOTO_",
+      "_OITA_",
+      "_MIYAZAKI_",
+      "_KAGOSHIMA_",
+      "_OKINAWA_",
+    ];
+
+    var races = [
+      {
+        island: "_KYUSHU_AND_OKINAWA_",
+        region: "_KYUSHU_AND_OKINAWA_",
+        prefecture: "_OKINAWA_",
+        name: "第8回 石垣島ウルトラマラソン",
+        year: 2022,
+        month: 5,
+        day: 15,
+        kmRace: 60,
+        kmCovered: 60,
+        time: "",
+        finished: true,
+      },
+      {
+        island: "_KYUSHU_AND_OKINAWA_",
+        region: "_KYUSHU_AND_OKINAWA_",
+        prefecture: "_OKINAWA_",
+        name: "第5回 沖縄100Kウルトラマラソン",
+        year: 2022,
+        month: 12,
+        day: 18,
+        kmRace: 100,
+        kmCovered: 85.5,
+        time: "",
+        finished: false,
+      },
+      {
+        island: "_HONSU_",
+        region: "_KANTO_",
+        prefecture: "_KANAGAWA_",
+        name: "第8回 横須賀・三浦100km・63kmみちくさウルトラマラソン",
+        year: 2023,
+        month: 5,
+        day: 27,
+        kmRace: 63,
+        kmCovered: 63,
+        time: "",
+        finished: true,
+      },
+      {
+        island: "_HONSU_",
+        region: "_CHUBU_",
+        prefecture: "_SHIZUOKA_",
+        name: "第10回南伊豆町100km78km66kmみちくさウルトラマラソン",
+        year: 2023,
+        month: 11,
+        day: 11,
+        kmRace: 66,
+        kmCovered: 66,
+        time: "",
+        finished: true,
+      },
+      {
+        island: "_KYUSHU_AND_OKINAWA_",
+        region: "_KYUSHU_AND_OKINAWA_",
+        prefecture: "_OKINAWA_",
+        name: "第6回 沖縄100Kウルトラマラソン",
+        year: 2023,
+        month: 12,
+        day: 17,
+        kmRace: 100,
+        kmCovered: 69,
+        time: "",
+        finished: false,
+      },
+      {
+        island: "_HONSU_",
+        region: "_KANTO_",
+        prefecture: "_CHIBA_",
+        name: "第8回南房総100km75kmみちくさウルトラマラソン",
+        year: 2024,
+        month: 3,
+        day: 16,
+        kmRace: 75,
+        kmCovered: 52,
+        finished: false,
+      },
+      {
+        island: "_HONSU_",
+        region: "_CHUBU_",
+        prefecture: "_AICHI_",
+        name: "第3回渥美半島ウルトラネイチャーラン",
+        year: 2024,
+        month: 4,
+        day: 20,
+        kmRace: 70,
+        kmCovered: 53,
+        time: "9:13:12",
+        finished: false,
+      },
+      {
+        island: "_HONSU_",
+        region: "_CHUBU_",
+        prefecture: "_NAGANO_",
+        name: "第30回 星の郷八ヶ岳野辺山高原100kmウルトラマラソン",
+        year: 2024,
+        month: 5,
+        day: 19,
+        kmRace: 68,
+        kmCovered: 54,
+        time: "7:53:38",
+        finished: false,
+      },
+      {
+        island: "_HONSU_",
+        region: "_CHUBU_",
+        prefecture: "_NIIGATA_",
+        name: "“ROCKIN’ BEAR” 妙高トレイルランニングレース",
+        year: 2024,
+        month: 6,
+        day: 15,
+        kmRace: 48,
+        kmCovered: 48,
+        time: "9:31:54",
+        finished: true,
+      },
+      {
+        island: "_HONSU_",
+        region: "_KANTO_",
+        prefecture: "_IBARAKI_",
+        name: "第11回筑波連山天空ロード＆トレイルランinいしおか",
+        year: 2024,
+        month: 8,
+        day: 25,
+        kmRace: 48,
+        kmCovered: 0,
+        time: "",
+        finished: false,
+      }
+    ];
+
+    var prefectureCounts = races.reduce((acc, { prefecture }) => ({ ...acc, [prefecture]: (acc[prefecture] || 0) + 1 }), {});
+    console.log(prefectureCounts);
+
+    var d = new jpmap.japanMap(document.getElementById("my-map"), {
+      areas: PREFECTURES.map((name, i) => ({
+        code: i + 1,
+        color: prefectureCounts[name] > 0 ? "#00CC55" : "#FFFFFF",
+        number: prefectureCounts[name] || 0,
+      })),
+      hoverColor: "#ffdd00",
+      movesIslands : true,
+      borderLineColor: "#000000",
+      width: 1000,
+      onHover: function(data){
+        var tt = document.getElementById("tooltip");
+        tt.innerHTML = (data.name + " : " + data.area.number);
+        tt.style = "display:block; position:fixed; overflow:hidden;";
+      },
+      onHoverOut: function(data) {
+        var tt = document.getElementById("tooltip");
+        tt.style = "display:none;";
+      }
+    });
+  </script>
+</body>
+</html>
