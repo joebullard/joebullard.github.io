@@ -153,6 +153,7 @@ function App() {
   const [data, setData] = useState(raceData);
   const [filteredData, setFilteredData] = useState([]);
   const [sortConfig, setSortConfig] = useState({ key: 'date', direction: 'ascending' });
+  const [selectedYear, setSelectedYear] = useState('');
 
   useEffect(() => {
     // Initially set filteredData to sorted data by date ascending
@@ -180,24 +181,29 @@ function App() {
 
   const handleFilterChange = (event) => {
     const { name, value } = event.target;
+    setSelectedYear(value); // Update selected year state
+
     let filtered;
     if (value === '') {
-      filtered = data;
+      filtered = [...data]; // Reset filter to all data
     } else {
-      filtered = data.filter(item => item[name] === value);
+      filtered = data.filter(item => item.year.toString() === value); // Filter by selected year
     }
-    setFilteredData(filtered);
+    
+    // Sort filtered data by date after filtering by year
+    const sortedData = filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+    setFilteredData(sortedData);
   };
 
   return (
     <Router basename="/race-results-app">
       <div className="App">
         <div className="filter-container">
-          <label htmlFor="dateFilter">Date:</label>
-          <select id="dateFilter" name="date" onChange={handleFilterChange}>
+          <label htmlFor="yearFilter">Year:</label>
+          <select id="yearFilter" name="year" onChange={handleFilterChange} value={selectedYear}>
             <option value="">All</option>
-            {Array.from(new Set(data.map(item => `${item.date}`))).map((date, index) => (
-              <option key={index} value={date}>{date}</option>
+            {Array.from(new Set(data.map(item => item.year))).map((year, index) => (
+              <option key={index} value={year}>{year}</option>
             ))}
           </select>
 
