@@ -328,6 +328,18 @@ function App() {
     }
   };
 
+  const clearFilters = () => {
+    setSelectedYear('');
+    setSelectedResult('');
+    setSelectedIsland('');
+    setSelectedRegion('');
+    setSelectedPrefecture('');
+
+    // Reset filtered data to all data sorted by date
+    const sortedData = [...data].sort((a, b) => new Date(a.date) - new Date(b.date));
+    setFilteredData(sortedData);
+  };
+
   return (
     <Router basename="/race-results-app">
       <div className="App">
@@ -371,6 +383,8 @@ function App() {
               <option key={key} value={key}>{prefectureMapping[key]}</option>
             ))}
           </select>
+
+          <button type="button" onClick={clearFilters}>Clear Filters</button>
         </div>
 
         <table>
