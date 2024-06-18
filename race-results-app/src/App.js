@@ -4,6 +4,16 @@ import './App.css';
 
 const raceData = [
   {
+    island: "_HONSU_",
+    region: "_KANTO_",
+    prefecture: "_TOKYO_",
+    name: "第14回 伊豆大島マラソン",
+    date: "2021-12-11",
+    year: 2022,
+    kmRace: 42.2,
+    result: "5:32:24",
+  },
+  {
     island: "_KYUSHU_AND_OKINAWA_",
     region: "_KYUSHU_AND_OKINAWA_",
     prefecture: "_OKINAWA_",
@@ -11,7 +21,6 @@ const raceData = [
     date: "2022-05-15",
     year: 2022,
     kmRace: 60,
-    kmCovered: 60,
     result: "9:27:29",
   },
   {
@@ -22,8 +31,7 @@ const raceData = [
     date: "2022-12-18",
     year: 2022,
     kmRace: 100,
-    kmCovered: 85.5,
-    result: "DNF",
+    result: "DNF (85.5km)",
   },
   {
     island: "_HONSU_",
@@ -33,7 +41,6 @@ const raceData = [
     date: "2023-05-27",
     year: 2023,
     kmRace: 63,
-    kmCovered: 63,
     result: "9:49:28",
   },
   {
@@ -44,7 +51,6 @@ const raceData = [
     date: "2023-11-11",
     year: 2023,
     kmRace: 66,
-    kmCovered: 66,
     result: "9:59:13",
   },
   {
@@ -55,8 +61,7 @@ const raceData = [
     date: "2023-12-17",
     year: 2023,
     kmRace: 100,
-    kmCovered: 69,
-    result: "DNF",
+    result: "DNF (69km)",
   },
   {
     island: "_HONSU_",
@@ -66,8 +71,7 @@ const raceData = [
     date: "2024-03-16",
     year: 2024,
     kmRace: 75,
-    kmCovered: 52,
-    result: "DNF",
+    result: "DNF (52km)",
   },
   {
     island: "_HONSU_",
@@ -77,8 +81,7 @@ const raceData = [
     date: "2024-04-20",
     year: 2024,
     kmRace: 70,
-    kmCovered: 53,
-    result: "DNF",
+    result: "DNF (53km)",
   },
   {
     island: "_HONSU_",
@@ -88,8 +91,7 @@ const raceData = [
     date: "2024-05-19",
     year: 2024,
     kmRace: 68,
-    kmCovered: 54,
-    result: "DNF",
+    result: "DNF (54km)",
   },
   {
     island: "_HONSU_",
@@ -99,7 +101,6 @@ const raceData = [
     date: "2024-06-15",
     year: 2024,
     kmRace: 48,
-    kmCovered: 48,
     result: "9:31:54",
   },
   {
@@ -110,7 +111,6 @@ const raceData = [
     date: "2024-08-25",
     year: 2024,
     kmRace: 75,
-    kmCovered: "TBD",
     result: "TBD",
   },
   {
@@ -121,7 +121,6 @@ const raceData = [
     date: "2024-07-20",
     year: 2024,
     kmRace: 60,
-    kmCovered: "TBD",
     result: "TBD",
   }
 ];
@@ -139,6 +138,7 @@ const regionMapping = {
 };
 
 const prefectureMapping = {
+  "_TOKYO_": "Tokyo",
   "_OKINAWA_": "Okinawa",
   "_KANAGAWA_": "Kanagawa",
   "_SHIZUOKA_": "Shizuoka",
@@ -154,6 +154,7 @@ function App() {
   const [filteredData, setFilteredData] = useState([]);
   const [sortConfig, setSortConfig] = useState({ key: 'date', direction: 'ascending' });
   const [selectedYear, setSelectedYear] = useState('');
+  const [selectedResult, setSelectedResult] = useState('');
 
   useEffect(() => {
     // Initially set filteredData to sorted data by date ascending
@@ -181,18 +182,38 @@ function App() {
 
   const handleFilterChange = (event) => {
     const { name, value } = event.target;
-    setSelectedYear(value); // Update selected year state
-
-    let filtered;
-    if (value === '') {
-      filtered = [...data]; // Reset filter to all data
-    } else {
-      filtered = data.filter(item => item.year.toString() === value); // Filter by selected year
-    }
     
-    // Sort filtered data by date after filtering by year
-    const sortedData = filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
-    setFilteredData(sortedData);
+    if (name === 'year') {
+      setSelectedYear(value); // Update selected year state
+
+      let filtered;
+      if (value === '') {
+        filtered = [...data]; // Reset filter to all data
+      } else {
+        filtered = data.filter(item => item.year.toString() === value); // Filter by selected year
+      }
+      
+      // Sort filtered data by date after filtering by year
+      const sortedData = filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+      setFilteredData(sortedData);
+    } else if (name === 'result') {
+      setSelectedResult(value); // Update selected result state
+
+      let filtered;
+      if (value === '') {
+        filtered = [...data]; // Reset filter to all data
+      } else if (value === 'Finished') {
+        filtered = data.filter(item => item.result.indexOf('DNF') === -1 && item.result !== 'TBD');
+      } else if (value === 'DNF') {
+        filtered = data.filter(item => item.result.indexOf('DNF') !== -1);
+      } else {
+        filtered = data.filter(item => item.result === value);
+      }
+      
+      // Sort filtered data by date after filtering by result
+      const sortedData = filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+      setFilteredData(sortedData);
+    }
   };
 
   return (
@@ -200,11 +221,19 @@ function App() {
       <div className="App">
         <div className="filter-container">
           <label htmlFor="yearFilter">Year:</label>
-          <select id="yearFilter" name="year" onChange={handleFilterChange} value={selectedYear}>
+          <select id="yearFilter" name="year" onChange={handleFilterChange}>
             <option value="">All</option>
             {Array.from(new Set(data.map(item => item.year))).map((year, index) => (
               <option key={index} value={year}>{year}</option>
             ))}
+          </select>
+
+          <label htmlFor="resultFilter">Result:</label>
+          <select id="resultFilter" name="result" onChange={handleFilterChange}>
+            <option value="">All</option>
+            <option value="Finished">Finished</option>
+            <option value="DNF">DNF</option>
+            <option value="TBD">TBD</option>
           </select>
 
           <label htmlFor="islandFilter">Island:</label>
@@ -236,26 +265,24 @@ function App() {
           <thead>
             <tr>
               <th onClick={() => sortTable('date')}>Date</th>
-              <th onClick={() => sortTable('island')}>Island</th>
-              <th onClick={() => sortTable('region')}>Region</th>
-              <th onClick={() => sortTable('prefecture')}>Prefecture</th>
-              <th onClick={() => sortTable('name')}>Race Name</th>
-              <th onClick={() => sortTable('kmRace')}>Race Distance (km)</th>
-              <th onClick={() => sortTable('kmCovered')}>Distance Covered (km)</th>
+              <th onClick={() => sortTable('name')}>Name</th>
+              <th onClick={() => sortTable('kmRace')}>Distance (km)</th>
               <th onClick={() => sortTable('result')}>Result</th>
+              <th onClick={() => sortTable('prefecture')}>Prefecture</th>
+              <th onClick={() => sortTable('region')}>Region</th>
+              <th onClick={() => sortTable('island')}>Island</th>
             </tr>
           </thead>
           <tbody>
             {filteredData.map((item, index) => (
               <tr key={index}>
                 <td>{item.date}</td>
-                <td>{islandMapping[item.island]}</td>
-                <td>{regionMapping[item.region]}</td>
-                <td>{prefectureMapping[item.prefecture]}</td>
                 <td>{item.name}</td>
                 <td>{item.kmRace}</td>
-                <td>{item.kmCovered}</td>
-                <td style={{ color: item.result === 'TBD' ? 'blue' : item.result === 'DNF' ? 'red' : 'black' }}>{item.result}</td>
+                <td style={{ color: item.result === 'TBD' ? 'blue' : item.result.indexOf('DNF') !== -1 ? 'red' : 'black' }}>{item.result}</td>
+                <td>{prefectureMapping[item.prefecture]}</td>
+                <td>{regionMapping[item.region]}</td>
+                <td>{islandMapping[item.island]}</td>
               </tr>
             ))}
           </tbody>
