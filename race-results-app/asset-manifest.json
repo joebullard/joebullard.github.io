@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/race-results-app/static/css/main.722b6849.css",
-    "main.js": "/race-results-app/static/js/main.77a27056.js",
+    "main.js": "/race-results-app/static/js/main.653acedc.js",
     "static/js/453.79ce5667.chunk.js": "/race-results-app/static/js/453.79ce5667.chunk.js",
     "index.html": "/race-results-app/index.html",
     "main.722b6849.css.map": "/race-results-app/static/css/main.722b6849.css.map",
-    "main.77a27056.js.map": "/race-results-app/static/js/main.77a27056.js.map",
+    "main.653acedc.js.map": "/race-results-app/static/js/main.653acedc.js.map",
     "453.79ce5667.chunk.js.map": "/race-results-app/static/js/453.79ce5667.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.722b6849.css",
-    "static/js/main.77a27056.js"
+    "static/js/main.653acedc.js"
   ]
 }
