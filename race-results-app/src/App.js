@@ -4,7 +4,7 @@ import './App.css';
 
 const raceData = [
   {
-    island: "_HONSU_",
+    island: "_HONSHU_",
     region: "_KANTO_",
     prefecture: "_TOKYO_",
     name: "第11回 伊豆大島マラソン\n\n11th Izu Oshima Marathon",
@@ -34,7 +34,7 @@ const raceData = [
     result: "DNF (85.5km)",
   },
   {
-    island: "_HONSU_",
+    island: "_HONSHU_",
     region: "_KANTO_",
     prefecture: "_KANAGAWA_",
     name: "第8回 横須賀・三浦100km・63kmみちくさウルトラマラソン\n\n8th Yokosuka Miura Michikusa Ultramarathon",
@@ -44,7 +44,7 @@ const raceData = [
     result: "9:49:28",
   },
   {
-    island: "_HONSU_",
+    island: "_HONSHU_",
     region: "_CHUBU_",
     prefecture: "_SHIZUOKA_",
     name: "第10回南伊豆町100km78km66kmみちくさウルトラマラソン\n\n10th Minami Izu Town Michikusa Ultramarathon",
@@ -64,7 +64,7 @@ const raceData = [
     result: "DNF (69km)",
   },
   {
-    island: "_HONSU_",
+    island: "_HONSHU_",
     region: "_KANTO_",
     prefecture: "_CHIBA_",
     name: "第8回南房総100km75kmみちくさウルトラマラソン\n\n8th Minami Boso Michikusa Ultramarathon",
@@ -74,7 +74,7 @@ const raceData = [
     result: "DNF (52km)",
   },
   {
-    island: "_HONSU_",
+    island: "_HONSHU_",
     region: "_CHUBU_",
     prefecture: "_AICHI_",
     name: "第3回渥美半島ウルトラネイチャーラン\n\n3rd Atsumi Peninsula Ultra Nature Run",
@@ -84,7 +84,7 @@ const raceData = [
     result: "DNF (53km)",
   },
   {
-    island: "_HONSU_",
+    island: "_HONSHU_",
     region: "_CHUBU_",
     prefecture: "_NAGANO_",
     name: "第30回 星の郷八ヶ岳野辺山高原100kmウルトラマラソン\n\n30th Nobeyama Ultramarathon",
@@ -94,7 +94,7 @@ const raceData = [
     result: "DNF (54km)",
   },
   {
-    island: "_HONSU_",
+    island: "_HONSHU_",
     region: "_CHUBU_",
     prefecture: "_NIIGATA_",
     name: "“ROCKIN’ BEAR” 妙高トレイルランニングレース\n\nRockin' Bear Myoko Trail Race",
@@ -104,7 +104,7 @@ const raceData = [
     result: "9:31:54",
   },
   {
-    island: "_HONSU_",
+    island: "_HONSHU_",
     region: "_KANTO_",
     prefecture: "_IBARAKI_",
     name: "第11回筑波連山天空ロード＆トレイルランinいしおか\n\n11th Tsukuba Mountain Range Sky Road & Trail Run in Ishioka",
@@ -114,7 +114,7 @@ const raceData = [
     result: "TBD",
   },
   {
-    island: "_HONSU_",
+    island: "_HONSHU_",
     region: "_KANTO_",
     prefecture: "_KANAGAWA_",
     name: "第27回 OverNight60km みちくさウルトラマラソン\n\n27th Overnight 60km Michikusa Ultramarathon",
@@ -128,7 +128,7 @@ const raceData = [
 // Mapping from underscored names to human-readable names
 const islandMapping = {
   "_KYUSHU_AND_OKINAWA_": "Kyushu and Okinawa",
-  "_HONSU_": "Honsu"
+  "_HONSHU_": "Honshu"
 };
 
 const regionMapping = {
