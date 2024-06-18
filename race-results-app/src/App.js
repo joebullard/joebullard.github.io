@@ -155,6 +155,9 @@ function App() {
   const [sortConfig, setSortConfig] = useState({ key: 'date', direction: 'ascending' });
   const [selectedYear, setSelectedYear] = useState('');
   const [selectedResult, setSelectedResult] = useState('');
+  const [selectedIsland, setSelectedIsland] = useState('');
+  const [selectedRegion, setSelectedRegion] = useState('');
+  const [selectedPrefecture, setSelectedPrefecture] = useState('');
 
   useEffect(() => {
     // Initially set filteredData to sorted data by date ascending
@@ -182,7 +185,7 @@ function App() {
 
   const handleFilterChange = (event) => {
     const { name, value } = event.target;
-    
+
     if (name === 'year') {
       setSelectedYear(value); // Update selected year state
 
@@ -193,7 +196,21 @@ function App() {
         filtered = data.filter(item => item.year.toString() === value); // Filter by selected year
       }
       
-      // Sort filtered data by date after filtering by year
+      // Apply other filters
+      if (selectedResult !== '') {
+        filtered = filtered.filter(item => item.result === selectedResult);
+      }
+      if (selectedIsland !== '') {
+        filtered = filtered.filter(item => item.island === selectedIsland);
+      }
+      if (selectedRegion !== '') {
+        filtered = filtered.filter(item => item.region === selectedRegion);
+      }
+      if (selectedPrefecture !== '') {
+        filtered = filtered.filter(item => item.prefecture === selectedPrefecture);
+      }
+      
+      // Sort filtered data by date after filtering
       const sortedData = filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
       setFilteredData(sortedData);
     } else if (name === 'result') {
@@ -210,7 +227,102 @@ function App() {
         filtered = data.filter(item => item.result === value);
       }
       
-      // Sort filtered data by date after filtering by result
+      // Apply other filters
+      if (selectedYear !== '') {
+        filtered = filtered.filter(item => item.year.toString() === selectedYear);
+      }
+      if (selectedIsland !== '') {
+        filtered = filtered.filter(item => item.island === selectedIsland);
+      }
+      if (selectedRegion !== '') {
+        filtered = filtered.filter(item => item.region === selectedRegion);
+      }
+      if (selectedPrefecture !== '') {
+        filtered = filtered.filter(item => item.prefecture === selectedPrefecture);
+      }
+      
+      // Sort filtered data by date after filtering
+      const sortedData = filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+      setFilteredData(sortedData);
+    } else if (name === 'island') {
+      setSelectedIsland(value); // Update selected island state
+
+      let filtered;
+      if (value === '') {
+        filtered = [...data]; // Reset filter to all data
+      } else {
+        filtered = data.filter(item => item.island === value); // Filter by selected island
+      }
+      
+      // Apply other filters
+      if (selectedYear !== '') {
+        filtered = filtered.filter(item => item.year.toString() === selectedYear);
+      }
+      if (selectedResult !== '') {
+        filtered = filtered.filter(item => item.result === selectedResult);
+      }
+      if (selectedRegion !== '') {
+        filtered = filtered.filter(item => item.region === selectedRegion);
+      }
+      if (selectedPrefecture !== '') {
+        filtered = filtered.filter(item => item.prefecture === selectedPrefecture);
+      }
+      
+      // Sort filtered data by date after filtering
+      const sortedData = filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+      setFilteredData(sortedData);
+    } else if (name === 'region') {
+      setSelectedRegion(value); // Update selected region state
+
+      let filtered;
+      if (value === '') {
+        filtered = [...data]; // Reset filter to all data
+      } else {
+        filtered = data.filter(item => item.region === value); // Filter by selected region
+      }
+      
+      // Apply other filters
+      if (selectedYear !== '') {
+        filtered = filtered.filter(item => item.year.toString() === selectedYear);
+      }
+      if (selectedResult !== '') {
+        filtered = filtered.filter(item => item.result === selectedResult);
+      }
+      if (selectedIsland !== '') {
+        filtered = filtered.filter(item => item.island === selectedIsland);
+      }
+      if (selectedPrefecture !== '') {
+        filtered = filtered.filter(item => item.prefecture === selectedPrefecture);
+      }
+      
+      // Sort filtered data by date after filtering
+      const sortedData = filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+      setFilteredData(sortedData);
+    } else if (name === 'prefecture') {
+      setSelectedPrefecture(value); // Update selected prefecture state
+
+      let filtered;
+      if (value === '') {
+        filtered = [...data]; // Reset filter to all data
+      } else {
+        filtered = data.filter(item => item.prefecture === value); // Filter by selected prefecture
+      }
+      
+      // Apply other filters
+      if (selectedYear !== '') {
+        filtered = filtered.filter(item => item.year.toString() === selectedYear);
+      }
+      if (selectedResult !== '') {
+        filtered = filtered.filter(item => item.result === selectedResult);
+      }
+      if (selectedIsland !== '') {
+        filtered = filtered.filter(item => item.island === selectedIsland);
+      }
+      if (selectedRegion !== '') {
+        filtered = filtered.filter(item => item.region === selectedRegion);
+      }
+      
+      // Sort filtered data by date after filtering
       const sortedData = filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
       setFilteredData(sortedData);
     }
@@ -221,7 +333,7 @@ function App() {
       <div className="App">
         <div className="filter-container">
           <label htmlFor="yearFilter">Year:</label>
-          <select id="yearFilter" name="year" onChange={handleFilterChange}>
+          <select id="yearFilter" name="year" value={selectedYear} onChange={handleFilterChange}>
             <option value="">All</option>
             {Array.from(new Set(data.map(item => item.year))).map((year, index) => (
               <option key={index} value={year}>{year}</option>
@@ -229,7 +341,7 @@ function App() {
           </select>
 
           <label htmlFor="resultFilter">Result:</label>
-          <select id="resultFilter" name="result" onChange={handleFilterChange}>
+          <select id="resultFilter" name="result" value={selectedResult} onChange={handleFilterChange}>
             <option value="">All</option>
             <option value="Finished">Finished</option>
             <option value="DNF">DNF</option>
@@ -237,7 +349,7 @@ function App() {
           </select>
 
           <label htmlFor="islandFilter">Island:</label>
-          <select id="islandFilter" name="island" onChange={handleFilterChange}>
+          <select id="islandFilter" name="island" value={selectedIsland} onChange={handleFilterChange}>
             <option value="">All</option>
             {Object.keys(islandMapping).sort().map((key) => (
               <option key={key} value={key}>{islandMapping[key]}</option>
@@ -245,7 +357,7 @@ function App() {
           </select>
 
           <label htmlFor="regionFilter">Region:</label>
-          <select id="regionFilter" name="region" onChange={handleFilterChange}>
+          <select id="regionFilter" name="region" value={selectedRegion} onChange={handleFilterChange}>
             <option value="">All</option>
             {Object.keys(regionMapping).sort().map((key) => (
               <option key={key} value={key}>{regionMapping[key]}</option>
@@ -253,7 +365,7 @@ function App() {
           </select>
 
           <label htmlFor="prefectureFilter">Prefecture:</label>
-          <select id="prefectureFilter" name="prefecture" onChange={handleFilterChange}>
+          <select id="prefectureFilter" name="prefecture" value={selectedPrefecture} onChange={handleFilterChange}>
             <option value="">All</option>
             {Object.keys(prefectureMapping).sort().map((key) => (
               <option key={key} value={key}>{prefectureMapping[key]}</option>
@@ -277,7 +389,7 @@ function App() {
             {filteredData.map((item, index) => (
               <tr key={index}>
                 <td>{item.date}</td>
-                <td style={{ whiteSpace: 'pre-line' }}>{item.name}</td>
+                <td style={{ whiteSpace: 'pre-line' }}>{item.name}</td> {/* Apply style for newline characters */}
                 <td>{item.kmRace}</td>
                 <td style={{ color: item.result === 'TBD' ? 'blue' : item.result.indexOf('DNF') !== -1 ? 'red' : 'black' }}>{item.result}</td>
                 <td>{prefectureMapping[item.prefecture]}</td>
