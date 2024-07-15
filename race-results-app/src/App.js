@@ -7,27 +7,27 @@ const raceData = [
     island: "_HONSHU_",
     region: "_KANTO_",
     prefecture: "_TOKYO_",
-    name: "第11回 伊豆大島マラソン\n\n11th Izu Oshima Marathon",
+    name: "第11回 伊豆大島マラソン\n11th Izu Oshima Marathon",
     date: "2021-12-11",
     year: 2021,
     kmRace: 42.2,
     result: "5:32:24",
   },
   {
-    island: "_KYUSHU_AND_OKINAWA_",
-    region: "_KYUSHU_AND_OKINAWA_",
+    island: "_OKINAWA_",
+    region: "_OKINAWA_",
     prefecture: "_OKINAWA_",
-    name: "第8回 石垣島ウルトラマラソン\n\n8th Ishigaki Island Ultramarathon",
+    name: "第8回 石垣島ウルトラマラソン\n8th Ishigaki Island Ultramarathon",
     date: "2022-05-15",
     year: 2022,
     kmRace: 60,
     result: "9:27:29",
   },
   {
-    island: "_KYUSHU_AND_OKINAWA_",
-    region: "_KYUSHU_AND_OKINAWA_",
+    island: "_OKINAWA_",
+    region: "_OKINAWA_",
     prefecture: "_OKINAWA_",
-    name: "第5回 沖縄100Kウルトラマラソン\n\n5th Okinawa 100K Ultramarathon",
+    name: "第5回 沖縄100Kウルトラマラソン\n5th Okinawa 100K Ultramarathon",
     date: "2022-12-18",
     year: 2022,
     kmRace: 100,
@@ -37,7 +37,7 @@ const raceData = [
     island: "_HONSHU_",
     region: "_KANTO_",
     prefecture: "_KANAGAWA_",
-    name: "第8回 横須賀・三浦100km・63kmみちくさウルトラマラソン\n\n8th Yokosuka Miura Michikusa Ultramarathon",
+    name: "第8回 横須賀・三浦100km・63kmみちくさウルトラマラソン\n8th Yokosuka Miura Michikusa Ultramarathon",
     date: "2023-05-27",
     year: 2023,
     kmRace: 63,
@@ -47,17 +47,17 @@ const raceData = [
     island: "_HONSHU_",
     region: "_CHUBU_",
     prefecture: "_SHIZUOKA_",
-    name: "第10回南伊豆町100km78km66kmみちくさウルトラマラソン\n\n10th Minami Izu Town Michikusa Ultramarathon",
+    name: "第10回南伊豆町100km78km66kmみちくさウルトラマラソン\n10th Minami Izu Town Michikusa Ultramarathon",
     date: "2023-11-11",
     year: 2023,
     kmRace: 66,
     result: "9:59:13",
   },
   {
-    island: "_KYUSHU_AND_OKINAWA_",
-    region: "_KYUSHU_AND_OKINAWA_",
+    island: "_OKINAWA_",
+    region: "_OKINAWA_",
     prefecture: "_OKINAWA_",
-    name: "第6回 沖縄100Kウルトラマラソン\n\n6th Okinawa 100K Ultramarathon",
+    name: "第6回 沖縄100Kウルトラマラソン\n6th Okinawa 100K Ultramarathon",
     date: "2023-12-17",
     year: 2023,
     kmRace: 100,
@@ -67,7 +67,7 @@ const raceData = [
     island: "_HONSHU_",
     region: "_KANTO_",
     prefecture: "_CHIBA_",
-    name: "第8回南房総100km75kmみちくさウルトラマラソン\n\n8th Minami Boso Michikusa Ultramarathon",
+    name: "第8回南房総100km75kmみちくさウルトラマラソン\n8th Minami Boso Michikusa Ultramarathon",
     date: "2024-03-16",
     year: 2024,
     kmRace: 75,
@@ -77,7 +77,7 @@ const raceData = [
     island: "_HONSHU_",
     region: "_CHUBU_",
     prefecture: "_AICHI_",
-    name: "第3回渥美半島ウルトラネイチャーラン\n\n3rd Atsumi Peninsula Ultra Nature Run",
+    name: "第3回渥美半島ウルトラネイチャーラン\n3rd Atsumi Peninsula Ultra Nature Run",
     date: "2024-04-20",
     year: 2024,
     kmRace: 70,
@@ -87,7 +87,7 @@ const raceData = [
     island: "_HONSHU_",
     region: "_CHUBU_",
     prefecture: "_NAGANO_",
-    name: "第30回 星の郷八ヶ岳野辺山高原100kmウルトラマラソン\n\n30th Nobeyama Ultramarathon",
+    name: "第30回 星の郷八ヶ岳野辺山高原100kmウルトラマラソン\n30th Nobeyama Ultramarathon",
     date: "2024-05-19",
     year: 2024,
     kmRace: 68,
@@ -97,7 +97,7 @@ const raceData = [
     island: "_HONSHU_",
     region: "_CHUBU_",
     prefecture: "_NIIGATA_",
-    name: "“ROCKIN’ BEAR” 妙高トレイルランニングレース\n\nRockin' Bear Myoko Trail Race",
+    name: "“ROCKIN’ BEAR” 妙高トレイルランニングレース\nRockin' Bear Myoko Trail Race",
     date: "2024-06-15",
     year: 2024,
     kmRace: 48,
@@ -107,32 +107,27 @@ const raceData = [
     island: "_HONSHU_",
     region: "_KANTO_",
     prefecture: "_IBARAKI_",
-    name: "第11回筑波連山天空ロード＆トレイルランinいしおか\n\n11th Tsukuba Mountain Range Sky Road & Trail Run in Ishioka",
+    name: "第11回筑波連山天空ロード＆トレイルランinいしおか\n11th Tsukuba Mountain Range Sky Road & Trail Run in Ishioka",
     date: "2024-08-25",
     year: 2024,
     kmRace: 75,
     result: "TBD",
   },
   {
-    island: "_HONSHU_",
-    region: "_KANTO_",
-    prefecture: "_KANAGAWA_",
-    name: "第27回 OverNight60km みちくさウルトラマラソン\n\n27th Overnight 60km Michikusa Ultramarathon",
-    date: "2024-07-20",
+    island: "_KYUSHU_",
+    region: "_KYUSHU_",
+    prefecture: "_NAGASAKI_",
+    name: "神々の島　壱岐ウルトラマラソン2024\nIsland of the Gods - Iki Ultramarathon 2024",
+    date: "2024-10-19",
     year: 2024,
-    kmRace: 60,
+    kmRace: 100,
     result: "TBD",
   }
 ];
 
-// Mapping from underscored names to human-readable names
-const islandMapping = {
-  "_KYUSHU_AND_OKINAWA_": "Kyushu and Okinawa",
-  "_HONSHU_": "Honshu"
-};
-
 const regionMapping = {
-  "_KYUSHU_AND_OKINAWA_": "Kyushu and Okinawa",
+  "_OKINAWA_": "Okinawa",
+  "_KYUSHU_": "Kyushu",
   "_KANTO_": "Kanto",
   "_CHUBU_": "Chubu"
 };
@@ -146,7 +141,8 @@ const prefectureMapping = {
   "_AICHI_": "Aichi",
   "_NAGANO_": "Nagano",
   "_NIIGATA_": "Niigata",
-  "_IBARAKI_": "Ibaraki"
+  "_IBARAKI_": "Ibaraki",
+  "_NAGASAKI_": "Nagasaki"
 };
 
 function App() {
@@ -155,12 +151,10 @@ function App() {
   const [sortConfig, setSortConfig] = useState({ key: 'date', direction: 'ascending' });
   const [selectedYear, setSelectedYear] = useState('');
   const [selectedResult, setSelectedResult] = useState('');
-  const [selectedIsland, setSelectedIsland] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('');
   const [selectedPrefecture, setSelectedPrefecture] = useState('');
 
   useEffect(() => {
-    // Initially set filteredData to sorted data by date ascending
     const sortedData = [...data].sort((a, b) => new Date(a.date) - new Date(b.date));
     setFilteredData(sortedData);
   }, [data]);
@@ -187,21 +181,17 @@ function App() {
     const { name, value } = event.target;
 
     if (name === 'year') {
-      setSelectedYear(value); // Update selected year state
+      setSelectedYear(value);
 
       let filtered;
       if (value === '') {
-        filtered = [...data]; // Reset filter to all data
+        filtered = [...data];
       } else {
-        filtered = data.filter(item => item.year.toString() === value); // Filter by selected year
+        filtered = data.filter(item => item.year.toString() === value);
       }
       
-      // Apply other filters
       if (selectedResult !== '') {
         filtered = filtered.filter(item => item.result === selectedResult);
-      }
-      if (selectedIsland !== '') {
-        filtered = filtered.filter(item => item.island === selectedIsland);
       }
       if (selectedRegion !== '') {
         filtered = filtered.filter(item => item.region === selectedRegion);
@@ -210,15 +200,14 @@ function App() {
         filtered = filtered.filter(item => item.prefecture === selectedPrefecture);
       }
       
-      // Sort filtered data by date after filtering
       const sortedData = filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
       setFilteredData(sortedData);
     } else if (name === 'result') {
-      setSelectedResult(value); // Update selected result state
+      setSelectedResult(value);
 
       let filtered;
       if (value === '') {
-        filtered = [...data]; // Reset filter to all data
+        filtered = [...data];
       } else if (value === 'Finished') {
         filtered = data.filter(item => item.result.indexOf('DNF') === -1 && item.result !== 'TBD');
       } else if (value === 'DNF') {
@@ -227,12 +216,8 @@ function App() {
         filtered = data.filter(item => item.result === value);
       }
       
-      // Apply other filters
       if (selectedYear !== '') {
         filtered = filtered.filter(item => item.year.toString() === selectedYear);
-      }
-      if (selectedIsland !== '') {
-        filtered = filtered.filter(item => item.island === selectedIsland);
       }
       if (selectedRegion !== '') {
         filtered = filtered.filter(item => item.region === selectedRegion);
@@ -241,88 +226,50 @@ function App() {
         filtered = filtered.filter(item => item.prefecture === selectedPrefecture);
       }
       
-      // Sort filtered data by date after filtering
       const sortedData = filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
-      setFilteredData(sortedData);
-    } else if (name === 'island') {
-      setSelectedIsland(value); // Update selected island state
-
-      let filtered;
-      if (value === '') {
-        filtered = [...data]; // Reset filter to all data
-      } else {
-        filtered = data.filter(item => item.island === value); // Filter by selected island
-      }
-      
-      // Apply other filters
-      if (selectedYear !== '') {
-        filtered = filtered.filter(item => item.year.toString() === selectedYear);
-      }
-      if (selectedResult !== '') {
-        filtered = filtered.filter(item => item.result === selectedResult);
-      }
-      if (selectedRegion !== '') {
-        filtered = filtered.filter(item => item.region === selectedRegion);
-      }
-      if (selectedPrefecture !== '') {
-        filtered = filtered.filter(item => item.prefecture === selectedPrefecture);
-      }
-      
-      // Sort filtered data by date after filtering
-      const sortedData = filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
-      setFilteredData(sortedData);
+      setFilteredData(sortedData);      
     } else if (name === 'region') {
-      setSelectedRegion(value); // Update selected region state
+      setSelectedRegion(value);
 
       let filtered;
       if (value === '') {
-        filtered = [...data]; // Reset filter to all data
+        filtered = [...data];
       } else {
-        filtered = data.filter(item => item.region === value); // Filter by selected region
+        filtered = data.filter(item => item.region === value);
       }
       
-      // Apply other filters
       if (selectedYear !== '') {
         filtered = filtered.filter(item => item.year.toString() === selectedYear);
       }
       if (selectedResult !== '') {
         filtered = filtered.filter(item => item.result === selectedResult);
       }
-      if (selectedIsland !== '') {
-        filtered = filtered.filter(item => item.island === selectedIsland);
-      }
       if (selectedPrefecture !== '') {
         filtered = filtered.filter(item => item.prefecture === selectedPrefecture);
       }
       
-      // Sort filtered data by date after filtering
       const sortedData = filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
       setFilteredData(sortedData);
     } else if (name === 'prefecture') {
-      setSelectedPrefecture(value); // Update selected prefecture state
+      setSelectedPrefecture(value);
 
       let filtered;
       if (value === '') {
-        filtered = [...data]; // Reset filter to all data
+        filtered = [...data];
       } else {
-        filtered = data.filter(item => item.prefecture === value); // Filter by selected prefecture
+        filtered = data.filter(item => item.prefecture === value);
       }
       
-      // Apply other filters
       if (selectedYear !== '') {
         filtered = filtered.filter(item => item.year.toString() === selectedYear);
       }
       if (selectedResult !== '') {
         filtered = filtered.filter(item => item.result === selectedResult);
       }
-      if (selectedIsland !== '') {
-        filtered = filtered.filter(item => item.island === selectedIsland);
-      }
       if (selectedRegion !== '') {
         filtered = filtered.filter(item => item.region === selectedRegion);
       }
       
-      // Sort filtered data by date after filtering
       const sortedData = filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
       setFilteredData(sortedData);
     }
@@ -331,11 +278,9 @@ function App() {
   const clearFilters = () => {
     setSelectedYear('');
     setSelectedResult('');
-    setSelectedIsland('');
     setSelectedRegion('');
     setSelectedPrefecture('');
 
-    // Reset filtered data to all data sorted by date
     const sortedData = [...data].sort((a, b) => new Date(a.date) - new Date(b.date));
     setFilteredData(sortedData);
   };
@@ -360,11 +305,11 @@ function App() {
             <option value="TBD">TBD</option>
           </select>
 
-          <label htmlFor="islandFilter">Island:</label>
-          <select id="islandFilter" name="island" value={selectedIsland} onChange={handleFilterChange}>
+          <label htmlFor="prefectureFilter">Prefecture:</label>
+          <select id="prefectureFilter" name="prefecture" value={selectedPrefecture} onChange={handleFilterChange}>
             <option value="">All</option>
-            {Object.keys(islandMapping).sort().map((key) => (
-              <option key={key} value={key}>{islandMapping[key]}</option>
+            {Object.keys(prefectureMapping).sort().map((key) => (
+              <option key={key} value={key}>{prefectureMapping[key]}</option>
             ))}
           </select>
 
@@ -373,14 +318,6 @@ function App() {
             <option value="">All</option>
             {Object.keys(regionMapping).sort().map((key) => (
               <option key={key} value={key}>{regionMapping[key]}</option>
-            ))}
-          </select>
-
-          <label htmlFor="prefectureFilter">Prefecture:</label>
-          <select id="prefectureFilter" name="prefecture" value={selectedPrefecture} onChange={handleFilterChange}>
-            <option value="">All</option>
-            {Object.keys(prefectureMapping).sort().map((key) => (
-              <option key={key} value={key}>{prefectureMapping[key]}</option>
             ))}
           </select>
 
@@ -396,19 +333,18 @@ function App() {
               <th onClick={() => sortTable('result')}>Result</th>
               <th onClick={() => sortTable('prefecture')}>Prefecture</th>
               <th onClick={() => sortTable('region')}>Region</th>
-              <th onClick={() => sortTable('island')}>Island</th>
+              {/*<th onClick={() => sortTable('island')}>Island</th>*/}
             </tr>
           </thead>
           <tbody>
             {filteredData.map((item, index) => (
               <tr key={index}>
                 <td>{item.date}</td>
-                <td style={{ whiteSpace: 'pre-line' }}>{item.name}</td> {/* Apply style for newline characters */}
+                <td style={{ whiteSpace: 'pre-line' }}>{item.name}</td>
                 <td>{item.kmRace}</td>
                 <td style={{ color: item.result === 'TBD' ? 'blue' : item.result.indexOf('DNF') !== -1 ? 'red' : 'black' }}>{item.result}</td>
                 <td>{prefectureMapping[item.prefecture]}</td>
                 <td>{regionMapping[item.region]}</td>
-                <td>{islandMapping[item.island]}</td>
               </tr>
             ))}
           </tbody>
