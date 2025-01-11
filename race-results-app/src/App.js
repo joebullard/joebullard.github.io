@@ -139,7 +139,7 @@ const raceData = [
     prefecture: "_TOKYO_",
     name: "Tokyo Grand Trail 2025",
     date: "2025-05-30",
-    year: 2024,
+    year: 2025,
     kmRace: 160,
     result: "TBD",
   },
