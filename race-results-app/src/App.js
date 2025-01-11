@@ -31,7 +31,7 @@ const raceData = [
     date: "2022-12-18",
     year: 2022,
     kmRace: 100,
-    result: "DNF (85.5km)",
+    result: "DNF (timeout 85.5km)",
   },
   {
     island: "_HONSHU_",
@@ -61,7 +61,7 @@ const raceData = [
     date: "2023-12-17",
     year: 2023,
     kmRace: 100,
-    result: "DNF (69km)",
+    result: "DNF (timeout 69km)",
   },
   {
     island: "_HONSHU_",
@@ -71,7 +71,7 @@ const raceData = [
     date: "2024-03-16",
     year: 2024,
     kmRace: 75,
-    result: "DNF (52km)",
+    result: "DNF (bonk 52km)",
   },
   {
     island: "_HONSHU_",
@@ -81,7 +81,7 @@ const raceData = [
     date: "2024-04-20",
     year: 2024,
     kmRace: 70,
-    result: "DNF (53km)",
+    result: "DNF (bonk 53km)",
   },
   {
     island: "_HONSHU_",
@@ -91,7 +91,7 @@ const raceData = [
     date: "2024-05-19",
     year: 2024,
     kmRace: 68,
-    result: "DNF (54km)",
+    result: "DNF (bonk 54km)",
   },
   {
     island: "_HONSHU_",
@@ -111,7 +111,7 @@ const raceData = [
     date: "2024-08-25",
     year: 2024,
     kmRace: 75,
-    result: "TBD",
+    result: "DNF (off-course 28km)",
   },
   {
     island: "_KYUSHU_",
@@ -121,15 +121,35 @@ const raceData = [
     date: "2024-10-19",
     year: 2024,
     kmRace: 100,
+    result: "DNF (timeout 82.5km)",
+  },
+  {
+    island: "_HONSHU_",
+    region: "_KANTO_",
+    prefecture: "_CHIBA_",
+    name: "2024房総半島横断レース\nBoso Peninsula Coast to Coast 2024",
+    date: "2024-12-22",
+    year: 2024,
+    kmRace: 72,
+    result: "12:28:42",
+  },
+  {
+    island: "_HONSHU_",
+    region: "_KANTO_",
+    prefecture: "_TOKYO_",
+    name: "Tokyo Grand Trail 2025",
+    date: "2025-05-30",
+    year: 2024,
+    kmRace: 160,
     result: "TBD",
-  }
+  },
 ];
 
 const regionMapping = {
   "_OKINAWA_": "Okinawa",
   "_KYUSHU_": "Kyushu",
   "_KANTO_": "Kanto",
-  "_CHUBU_": "Chubu"
+  "_CHUBU_": "Chubu",
 };
 
 const prefectureMapping = {
@@ -142,7 +162,7 @@ const prefectureMapping = {
   "_NAGANO_": "Nagano",
   "_NIIGATA_": "Niigata",
   "_IBARAKI_": "Ibaraki",
-  "_NAGASAKI_": "Nagasaki"
+  "_NAGASAKI_": "Nagasaki",
 };
 
 function App() {
