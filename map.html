@@ -29,11 +29,6 @@
       return percent * (xMax - xMin) + xMin;
     }
 
-    // function getColorCode(target) {
-    //   const c = Math.round(255.0 - scale(0,255,0,20,target)).toString(16).padStart(2, "0");
-    //   return "#FF" + c + c;
-    // }
-
     var tooltipSpan = document.getElementById('tooltip');
     window.onmousemove = function (e) {
         var x = e.clientX, y = e.clientY;
@@ -45,23 +40,6 @@
       return count > 0 ? "#00CC55" : "#FFFFFF";
     }
 
-    const ISLANDS = [
-      "_HOKKAIDO_",
-      "_HONSU_",
-      "_SHIKOKU_",
-      "_KYUSHU_AND_OKINAWA_",
-    ];
-
-    const REGIONS = [
-      "_HOKKAIDO_",
-      "_TOHOKU_",
-      "_KANTO_",
-      "_CHUBU_",
-      "_KANSAI_",
-      "_CHUGOKU_",
-      "_SHIKOKU_",
-      "_KYUSHU_AND_OKINAWA_",
-    ];
 
     const PREFECTURES = [
       "_HOKKAIDO_",
@@ -113,154 +91,160 @@
       "_OKINAWA_",
     ];
 
-    var races = [
-      {
-        island: "_KYUSHU_AND_OKINAWA_",
-        region: "_KYUSHU_AND_OKINAWA_",
-        prefecture: "_OKINAWA_",
-        name: "第8回 石垣島ウルトラマラソン",
-        year: 2022,
-        month: 5,
-        day: 15,
-        kmRace: 60,
-        kmCovered: 60,
-        time: "",
-        finished: true,
-      },
-      {
-        island: "_KYUSHU_AND_OKINAWA_",
-        region: "_KYUSHU_AND_OKINAWA_",
-        prefecture: "_OKINAWA_",
-        name: "第5回 沖縄100Kウルトラマラソン",
-        year: 2022,
-        month: 12,
-        day: 18,
-        kmRace: 100,
-        kmCovered: 85.5,
-        time: "",
-        finished: false,
-      },
-      {
-        island: "_HONSU_",
-        region: "_KANTO_",
-        prefecture: "_KANAGAWA_",
-        name: "第8回 横須賀・三浦100km・63kmみちくさウルトラマラソン",
-        year: 2023,
-        month: 5,
-        day: 27,
-        kmRace: 63,
-        kmCovered: 63,
-        time: "",
-        finished: true,
-      },
-      {
-        island: "_HONSU_",
-        region: "_CHUBU_",
-        prefecture: "_SHIZUOKA_",
-        name: "第10回南伊豆町100km78km66kmみちくさウルトラマラソン",
-        year: 2023,
-        month: 11,
-        day: 11,
-        kmRace: 66,
-        kmCovered: 66,
-        time: "",
-        finished: true,
-      },
-      {
-        island: "_KYUSHU_AND_OKINAWA_",
-        region: "_KYUSHU_AND_OKINAWA_",
-        prefecture: "_OKINAWA_",
-        name: "第6回 沖縄100Kウルトラマラソン",
-        year: 2023,
-        month: 12,
-        day: 17,
-        kmRace: 100,
-        kmCovered: 69,
-        time: "",
-        finished: false,
-      },
-      {
-        island: "_HONSU_",
-        region: "_KANTO_",
-        prefecture: "_CHIBA_",
-        name: "第8回南房総100km75kmみちくさウルトラマラソン",
-        year: 2024,
-        month: 3,
-        day: 16,
-        kmRace: 75,
-        kmCovered: 52,
-        finished: false,
-      },
-      {
-        island: "_HONSU_",
-        region: "_CHUBU_",
-        prefecture: "_AICHI_",
-        name: "第3回渥美半島ウルトラネイチャーラン",
-        year: 2024,
-        month: 4,
-        day: 20,
-        kmRace: 70,
-        kmCovered: 53,
-        time: "9:13:12",
-        finished: false,
-      },
-      {
-        island: "_HONSU_",
-        region: "_CHUBU_",
-        prefecture: "_NAGANO_",
-        name: "第30回 星の郷八ヶ岳野辺山高原100kmウルトラマラソン",
-        year: 2024,
-        month: 5,
-        day: 19,
-        kmRace: 68,
-        kmCovered: 54,
-        time: "7:53:38",
-        finished: false,
-      },
-      {
-        island: "_HONSU_",
-        region: "_CHUBU_",
-        prefecture: "_NIIGATA_",
-        name: "“ROCKIN’ BEAR” 妙高トレイルランニングレース",
-        year: 2024,
-        month: 6,
-        day: 15,
-        kmRace: 48,
-        kmCovered: 48,
-        time: "9:31:54",
-        finished: true,
-      },
-      {
-        island: "_HONSU_",
-        region: "_KANTO_",
-        prefecture: "_IBARAKI_",
-        name: "第11回筑波連山天空ロード＆トレイルランinいしおか",
-        year: 2024,
-        month: 8,
-        day: 25,
-        kmRace: 48,
-        kmCovered: 0,
-        time: "",
-        finished: false,
-      }
-    ];
+const raceData = [
+  {
+    island: "_HONSHU_",
+    region: "_KANTO_",
+    prefecture: "_TOKYO_",
+    name: "第11回 伊豆大島マラソン\n11th Izu Oshima Marathon",
+    date: "2021-12-11",
+    year: 2021,
+    kmRace: 42.2,
+    result: "5:32:24",
+  },
+  {
+    island: "_OKINAWA_",
+    region: "_OKINAWA_",
+    prefecture: "_OKINAWA_",
+    name: "第8回 石垣島ウルトラマラソン\n8th Ishigaki Island Ultramarathon",
+    date: "2022-05-15",
+    year: 2022,
+    kmRace: 60,
+    result: "9:27:29",
+  },
+  {
+    island: "_OKINAWA_",
+    region: "_OKINAWA_",
+    prefecture: "_OKINAWA_",
+    name: "第5回 沖縄100Kウルトラマラソン\n5th Okinawa 100K Ultramarathon",
+    date: "2022-12-18",
+    year: 2022,
+    kmRace: 100,
+    result: "DNF (85.5km)",
+  },
+  {
+    island: "_HONSHU_",
+    region: "_KANTO_",
+    prefecture: "_KANAGAWA_",
+    name: "第8回 横須賀・三浦100km・63kmみちくさウルトラマラソン\n8th Yokosuka Miura Michikusa Ultramarathon",
+    date: "2023-05-27",
+    year: 2023,
+    kmRace: 63,
+    result: "9:49:28",
+  },
+  {
+    island: "_HONSHU_",
+    region: "_CHUBU_",
+    prefecture: "_SHIZUOKA_",
+    name: "第10回南伊豆町100km78km66kmみちくさウルトラマラソン\n10th Minami Izu Town Michikusa Ultramarathon",
+    date: "2023-11-11",
+    year: 2023,
+    kmRace: 66,
+    result: "9:59:13",
+  },
+  {
+    island: "_OKINAWA_",
+    region: "_OKINAWA_",
+    prefecture: "_OKINAWA_",
+    name: "第6回 沖縄100Kウルトラマラソン\n6th Okinawa 100K Ultramarathon",
+    date: "2023-12-17",
+    year: 2023,
+    kmRace: 100,
+    result: "DNF (69km)",
+  },
+  {
+    island: "_HONSHU_",
+    region: "_KANTO_",
+    prefecture: "_CHIBA_",
+    name: "第8回南房総100km75kmみちくさウルトラマラソン\n8th Minami Boso Michikusa Ultramarathon",
+    date: "2024-03-16",
+    year: 2024,
+    kmRace: 75,
+    result: "DNF (52km)",
+  },
+  {
+    island: "_HONSHU_",
+    region: "_CHUBU_",
+    prefecture: "_AICHI_",
+    name: "第3回渥美半島ウルトラネイチャーラン\n3rd Atsumi Peninsula Ultra Nature Run",
+    date: "2024-04-20",
+    year: 2024,
+    kmRace: 70,
+    result: "DNF (53km)",
+  },
+  {
+    island: "_HONSHU_",
+    region: "_CHUBU_",
+    prefecture: "_NAGANO_",
+    name: "第30回 星の郷八ヶ岳野辺山高原100kmウルトラマラソン\n30th Nobeyama Ultramarathon",
+    date: "2024-05-19",
+    year: 2024,
+    kmRace: 68,
+    result: "DNF (54km)",
+  },
+  {
+    island: "_HONSHU_",
+    region: "_CHUBU_",
+    prefecture: "_NIIGATA_",
+    name: "“ROCKIN’ BEAR” 妙高トレイルランニングレース\nRockin' Bear Myoko Trail Race",
+    date: "2024-06-15",
+    year: 2024,
+    kmRace: 48,
+    result: "9:31:54",
+  },
+  {
+    island: "_HONSHU_",
+    region: "_KANTO_",
+    prefecture: "_IBARAKI_",
+    name: "第11回筑波連山天空ロード＆トレイルランinいしおか\n11th Tsukuba Mountain Range Sky Road & Trail Run in Ishioka",
+    date: "2024-08-25",
+    year: 2024,
+    kmRace: 75,
+    result: "DNF (off-course)",
+  },
+  {
+    island: "_KYUSHU_",
+    region: "_KYUSHU_",
+    prefecture: "_NAGASAKI_",
+    name: "神々の島　壱岐ウルトラマラソン2024\nIsland of the Gods - Iki Ultramarathon 2024",
+    date: "2024-10-19",
+    year: 2024,
+    kmRace: 100,
+    result: "DNF (timeout 82.5km)",
+  },
+  {
+    island: "_HONSHU_",
+    region: "_KANTO_",
+    prefecture: "_CHIBA_",
+    name: "Coast to Coast 2024房総半島横断レース\nBoso Peninsula Coast to Coast 2024",
+    date: "2024-12-22",
+    year: 2024,
+    kmRace: 72,
+    result: "12:28:42",
+  }
+];
 
-    var prefectureCounts = races.reduce((acc, { prefecture }) => ({ ...acc, [prefecture]: (acc[prefecture] || 0) + 1 }), {});
-    console.log(prefectureCounts);
+const raceDataPending = [
+];
+
+    var prefectureCounts = raceData.reduce((acc, { prefecture, }) => ({ ...acc, [prefecture]: (acc[prefecture] || 0) + 1 }), {});
+    var prefectureCountsPending = raceDataPending.reduce((acc, { prefecture }) => ({ ...acc, [prefecture]: (acc[prefecture] || 0) + 1 }), {});
 
     var d = new jpmap.japanMap(document.getElementById("my-map"), {
       areas: PREFECTURES.map((name, i) => ({
         code: i + 1,
-        color: prefectureCounts[name] > 0 ? "#00CC55" : "#FFFFFF",
-        number: prefectureCounts[name] || 0,
+        color: prefectureCounts[name] > 0 ? "#00CC55" : prefectureCountsPending[name] > 0 ? "#0055CC" : "#FFFFFF",
+        number: prefectureCounts[name] || prefectureCountsPending[name] || 0,
       })),
       hoverColor: "#ffdd00",
       movesIslands : true,
       borderLineColor: "#000000",
       width: 1000,
+      lang: 'en',
+      showsPrefectureName: true,
       onHover: function(data){
         var tt = document.getElementById("tooltip");
-        tt.innerHTML = (data.name + " : " + data.area.number);
+        tt.innerHTML = (data.area.number);
         tt.style = "display:block; position:fixed; overflow:hidden;";
       },
       onHoverOut: function(data) {
