@@ -77,21 +77,74 @@ export default function RaceCard({ children, id, nameJa, nameEn, date, distance,
 
   return (
     <>
-      <Card variant="outlined" sx={{ width: 400, minHeight: 460 }}>
+      <Card
+        variant="outlined"
+        sx={{
+          width: 400,
+          minHeight: 460,
+        }}
+      >
         <Badge
           color={colorMap[status] || "neutral"}
           badgeContent={status}
         >
-          <CardContent>
+          <CardContent
+            sx={{
+              transition: 'transform 0.15s ease-in-out',
+              '&:hover': {
+                transform: 'scale(1.05)',
+              },
+              position: 'relative',
+            }}
+          >
             <AspectRatio ratio="2">
               <img
-                src={images[0]}
+                src={images[currentImageIndex]}
                 loading="lazy"
                 alt=""
                 onClick={handleImageClick}
-                style={{ cursor: 'pointer' }}
+                style={{
+                  cursor: 'pointer',
+                  // objectFit: 'contain', // Ensures the image scales to fit without losing aspect ratio
+                  width: '100%',
+                  height: '100%',
+                }}
               />
             </AspectRatio>
+            <button
+              onClick={handlePrev}
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '5%',
+                transform: 'translateY(-50%)',
+                background: 'none',
+                border: 'none',
+                color: 'white',
+                fontSize: '1.5rem',
+                cursor: 'pointer',
+                zIndex: 1,
+              }}
+            >
+              &#8249;
+            </button>
+            <button
+              onClick={handleNext}
+              style={{
+                position: 'absolute',
+                top: '50%',
+                right: '5%',
+                transform: 'translateY(-50%)',
+                background: 'none',
+                border: 'none',
+                color: 'white',
+                fontSize: '1.5rem',
+                cursor: 'pointer',
+                zIndex: 1,
+              }}
+            >
+              &#8250;
+            </button>
           </CardContent>
         </Badge>
         <CardContent>
@@ -179,7 +232,11 @@ export default function RaceCard({ children, id, nameJa, nameEn, date, distance,
           <img
             src={images[currentImageIndex]}
             alt=""
-            style={{ maxWidth: '90%', maxHeight: '90%' }}
+            style={{
+              maxWidth: '90%',
+              maxHeight: '90%',
+              objectFit: 'contain', // Ensures the image scales to fit without losing aspect ratio
+            }}
           />
           <button
             onClick={handleNext}
