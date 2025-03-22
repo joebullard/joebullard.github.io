@@ -8,6 +8,7 @@ import {
   CardOverflow,
   Chip,
   Divider,
+  IconButton,
   Typography,
 } from '@mui/joy';
 
@@ -46,41 +47,39 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
         variant="outlined"
         sx={{
           width: 420,
-          minHeight: 500,
+          minHeight: 480,
         }}
       >
-        <Badge
-          color={colorMap[status] || "neutral"}
-          badgeContent={status}
+        <CardOverflow
+          sx={{
+            transition: 'transform 0.2s ease-in-out',
+            '&:hover': {
+              transform: 'scale(1.02)',
+            },
+            position: 'relative',
+          }}
         >
-          <CardContent
-            sx={{
-              transition: 'transform 0.2s ease-in-out',
-              '&:hover': {
-                transform: 'scale(1.05)',
-              },
-              position: 'relative',
-            }}
-          >
-            <AspectRatio ratio="2">
-              <img
-                src={`race-results-app/raceImages/${id}_thumbnail.png`}
-                loading="lazy"
-                alt=""
-                onClick={handleImageClick}
-                style={{
-                  cursor: 'pointer',
-                  // objectFit: 'contain', // Ensures the image scales to fit without losing aspect ratio
-                  width: '100%',
-                  height: '100%',
-                }}
-              />
-            </AspectRatio>
-          </CardContent>
-        </Badge>
+          <AspectRatio ratio="2">
+            <img
+              src={`race-results-app/raceImages/${id}_thumbnail.png`}
+              loading="lazy"
+              alt=""
+              onClick={handleImageClick}
+              style={{
+                cursor: 'pointer',
+                width: '100%',
+                height: '100%',
+              }}
+            />
+          </AspectRatio>
+        </CardOverflow>
         <CardContent>
-          <Typography level="title-md">{nameEn}</Typography>
-          <Typography level="body-sm">{nameJa}</Typography>
+          <Typography level="title-md">
+            {nameEn}
+          </Typography>
+          <Typography level="body-sm">
+            {nameJa}
+          </Typography>
         </CardContent>
         <CardContent>
           <Typography level="body-xs" textColor="text.secondary">
@@ -90,6 +89,14 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
         <CardOverflow variant="soft" sx={{ bgcolor: 'background.level1' }}>
           <Divider inset="context" />
           <CardContent orientation="horizontal">
+          <Typography
+              level="body-xs"
+              textColor="text.secondary"
+              sx={{ fontWeight: 'md' }}
+            >
+              {date}
+            </Typography>
+            <Divider orientation="vertical" />
             <Typography
               level="body-xs"
               textColor="text.secondary"
@@ -127,6 +134,18 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
                 </Typography>
               </>
             ) : null}
+            <Chip
+              variant="solid"
+              color={colorMap[status] || "neutral"}
+              size="sm"
+              sx={{
+                position: 'absolute',
+                zIndex: 2,
+                right: '1rem',
+              }}
+            >
+             {status}
+            </Chip>
           </CardContent>
         </CardOverflow>
       </Card>
