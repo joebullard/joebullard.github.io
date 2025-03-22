@@ -61,7 +61,7 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
         >
           <AspectRatio ratio="2">
             <img
-              src={`race-results-app/raceImages/${id}_thumbnail.png`}
+              src={`/race-results-app/raceImages/${id}_thumbnail.png`}
               loading="lazy"
               alt=""
               onClick={handleImageClick}
