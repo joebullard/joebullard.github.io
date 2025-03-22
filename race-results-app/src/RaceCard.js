@@ -11,7 +11,7 @@ import {
   Typography,
 } from '@mui/joy';
 
-export default function RaceCard({ children, id, nameJa, nameEn, date, distance, ascent, result, status, itraPoints, itraLink, prefecture }) {
+export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, result, status, itraPoints, itraLink, report }) {
   const colorMap = {
     "Finish": "success",
     "DNF": "danger",
@@ -27,24 +27,6 @@ export default function RaceCard({ children, id, nameJa, nameEn, date, distance,
     setOpen(false);
   };
 
-  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
-  const images = [
-    `race-results-app/races/${id}/image0.png`,
-    `race-results-app/races/${id}/image1.png`,
-    `race-results-app/races/${id}/image2.png`,
-    // Add more images as needed
-  ];
-
-  const handleNext = (e) => {
-    e.stopPropagation();
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
-
-  const handlePrev = (e) => {
-    e.stopPropagation();
-    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-  };
-
   React.useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && open) {
@@ -58,30 +40,13 @@ export default function RaceCard({ children, id, nameJa, nameEn, date, distance,
     };
   }, [open]);
 
-  React.useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape' && open) {
-        handleClose();
-      } else if (e.key === 'ArrowRight' && open) {
-        handleNext(e);
-      } else if (e.key === 'ArrowLeft' && open) {
-        handlePrev(e);
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [open, handleNext, handlePrev]);
-
   return (
     <>
       <Card
         variant="outlined"
         sx={{
-          width: 400,
-          minHeight: 460,
+          width: 420,
+          minHeight: 500,
         }}
       >
         <Badge
@@ -90,7 +55,7 @@ export default function RaceCard({ children, id, nameJa, nameEn, date, distance,
         >
           <CardContent
             sx={{
-              transition: 'transform 0.15s ease-in-out',
+              transition: 'transform 0.2s ease-in-out',
               '&:hover': {
                 transform: 'scale(1.05)',
               },
@@ -99,7 +64,7 @@ export default function RaceCard({ children, id, nameJa, nameEn, date, distance,
           >
             <AspectRatio ratio="2">
               <img
-                src={images[currentImageIndex]}
+                src={`race-results-app/raceImages/${id}_thumbnail.png`}
                 loading="lazy"
                 alt=""
                 onClick={handleImageClick}
@@ -111,40 +76,6 @@ export default function RaceCard({ children, id, nameJa, nameEn, date, distance,
                 }}
               />
             </AspectRatio>
-            <button
-              onClick={handlePrev}
-              style={{
-                position: 'absolute',
-                top: '50%',
-                left: '5%',
-                transform: 'translateY(-50%)',
-                background: 'none',
-                border: 'none',
-                color: 'white',
-                fontSize: '1.5rem',
-                cursor: 'pointer',
-                zIndex: 1,
-              }}
-            >
-              &#8249;
-            </button>
-            <button
-              onClick={handleNext}
-              style={{
-                position: 'absolute',
-                top: '50%',
-                right: '5%',
-                transform: 'translateY(-50%)',
-                background: 'none',
-                border: 'none',
-                color: 'white',
-                fontSize: '1.5rem',
-                cursor: 'pointer',
-                zIndex: 1,
-              }}
-            >
-              &#8250;
-            </button>
           </CardContent>
         </Badge>
         <CardContent>
@@ -153,7 +84,7 @@ export default function RaceCard({ children, id, nameJa, nameEn, date, distance,
         </CardContent>
         <CardContent>
           <Typography level="body-xs" textColor="text.secondary">
-            {children}
+            {report}
           </Typography>
         </CardContent>
         <CardOverflow variant="soft" sx={{ bgcolor: 'background.level1' }}>
@@ -215,22 +146,8 @@ export default function RaceCard({ children, id, nameJa, nameEn, date, distance,
           }}
           onClick={handleClose}
         >
-          <button
-            onClick={handlePrev}
-            style={{
-              position: 'absolute',
-              left: '10%',
-              background: 'none',
-              border: 'none',
-              color: 'white',
-              fontSize: '2rem',
-              cursor: 'pointer',
-            }}
-          >
-            &#8249;
-          </button>
           <img
-            src={images[currentImageIndex]}
+            src={`race-results-app/raceImages/${id}.png`}
             alt=""
             style={{
               maxWidth: '90%',
@@ -238,20 +155,6 @@ export default function RaceCard({ children, id, nameJa, nameEn, date, distance,
               objectFit: 'contain', // Ensures the image scales to fit without losing aspect ratio
             }}
           />
-          <button
-            onClick={handleNext}
-            style={{
-              position: 'absolute',
-              right: '10%',
-              background: 'none',
-              border: 'none',
-              color: 'white',
-              fontSize: '2rem',
-              cursor: 'pointer',
-            }}
-          >
-            &#8250;
-          </button>
         </div>
       )}
     </>

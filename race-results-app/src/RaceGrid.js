@@ -27,9 +27,8 @@ export default function RaceGrid() {
                 status={race.status}
                 itraPoints={race.itraPoints}
                 itraLink={race.itraLink}
-            >
-              {race.report}
-            </RaceCard>
+                report={race.report}
+            />
           </Grid>
         ))}
     </Grid>
