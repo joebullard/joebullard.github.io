@@ -73,14 +73,14 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
             />
           </AspectRatio>
         </CardOverflow>
-        <CardContent>
+        <CardOverflow>
           <Typography level="title-md">
             {nameEn}
           </Typography>
           <Typography level="body-sm">
             {nameJa}
           </Typography>
-        </CardContent>
+        </CardOverflow>
         <CardContent>
           <Typography level="body-xs" textColor="text.secondary">
             {report}
