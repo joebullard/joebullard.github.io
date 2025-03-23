@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/race-results-app/static/css/main.f360d67c.css",
-    "main.js": "/race-results-app/static/js/main.07da40bc.js",
+    "main.js": "/race-results-app/static/js/main.2c03fe22.js",
     "static/js/453.79ce5667.chunk.js": "/race-results-app/static/js/453.79ce5667.chunk.js",
     "static/media/inter-latin-ext-400-normal.woff": "/race-results-app/static/media/inter-latin-ext-400-normal.1c20f7dc20d731a18fcd.woff",
     "static/media/inter-latin-400-normal.woff": "/race-results-app/static/media/inter-latin-400-normal.b0c8fe9db56dd415a25a.woff",
@@ -19,11 +19,11 @@
     "static/media/inter-vietnamese-400-normal.woff2": "/race-results-app/static/media/inter-vietnamese-400-normal.44c9df135eec470b0ab6.woff2",
     "index.html": "/race-results-app/index.html",
     "main.f360d67c.css.map": "/race-results-app/static/css/main.f360d67c.css.map",
-    "main.07da40bc.js.map": "/race-results-app/static/js/main.07da40bc.js.map",
+    "main.2c03fe22.js.map": "/race-results-app/static/js/main.2c03fe22.js.map",
     "453.79ce5667.chunk.js.map": "/race-results-app/static/js/453.79ce5667.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f360d67c.css",
-    "static/js/main.07da40bc.js"
+    "static/js/main.2c03fe22.js"
   ]
 }
