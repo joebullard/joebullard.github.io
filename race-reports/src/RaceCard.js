@@ -61,7 +61,7 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
         >
           <AspectRatio ratio="2">
             <img
-              src={`/race-results-app/raceImages/${id}_thumbnail.png`}
+              src={`/race-reports/raceImages/${id}_thumbnail.png`}
               loading="lazy"
               alt=""
               onClick={handleImageClick}
@@ -166,7 +166,7 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
           onClick={handleClose}
         >
           <img
-            src={`/race-results-app/raceImages/${id}.png`}
+            src={`/race-reports/raceImages/${id}.png`}
             alt=""
             style={{
               maxWidth: '90%',

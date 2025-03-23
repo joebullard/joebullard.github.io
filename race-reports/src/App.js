@@ -7,7 +7,7 @@ import {
 
 function App() {
   return (
-    <Router basename="/race-results-app">
+    <Router basename="/race-reports">
       <Sheet sx={{ p: 4 }}>
         <RaceGrid />
       </Sheet>
