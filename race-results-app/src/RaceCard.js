@@ -166,7 +166,7 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
           onClick={handleClose}
         >
           <img
-            src={`race-results-app/raceImages/${id}.png`}
+            src={`/race-results-app/raceImages/${id}.png`}
             alt=""
             style={{
               maxWidth: '90%',
