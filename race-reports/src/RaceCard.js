@@ -1,14 +1,11 @@
 import * as React from 'react';
 import {
   AspectRatio,
-  Badge,
   Card,
   CardContent,
-  CardCover,
   CardOverflow,
   Chip,
   Divider,
-  IconButton,
   Typography,
 } from '@mui/joy';
 
