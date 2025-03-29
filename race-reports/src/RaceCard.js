@@ -6,6 +6,9 @@ import {
   CardOverflow,
   Chip,
   Divider,
+  Modal,
+  ModalClose,
+  ModalDialog,
   Typography,
 } from '@mui/joy';
 
@@ -30,18 +33,10 @@ export default function RaceCard({
     "Upcoming": "neutral",
   };
 
-  const handleImageClick = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   React.useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape" && open) {
-        handleClose();
+        setOpen(false);
       }
     };
 
@@ -74,7 +69,7 @@ export default function RaceCard({
               src={`/race-reports/raceImages/${id}_thumbnail.png`}
               loading="lazy"
               alt=""
-              onClick={handleImageClick}
+              onClick={() => setOpen(true)}
               style={{
                 cursor: "pointer",
                 width: "100%",
@@ -134,9 +129,7 @@ export default function RaceCard({
                   textColor="text.secondary"
                   sx={{ fontWeight: "md" }}
                 >
-                  <a href={itraLink} target="_blank">
-                    iTRA {itraPoints}
-                  </a>
+                  <a href={itraLink} target="_blank">iTRA {itraPoints}</a>
                 </Typography>
               </>
             ) : null}
@@ -155,33 +148,17 @@ export default function RaceCard({
           </CardContent>
         </CardOverflow>
       </Card>
-      {open && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.8)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 1000,
-          }}
-          onClick={handleClose}
-        >
-          <img
-            src={`/race-reports/raceImages/${id}.png`}
-            alt=""
-            style={{
-              maxWidth: "90%",
-              maxHeight: "90%",
-              objectFit: "contain", // Ensures the image scales to fit without losing aspect ratio
-            }}
-          />
-        </div>
-      )}
+
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+      >
+        <ModalDialog layout="center">
+          <ModalClose />
+          <img src={`/race-reports/raceImages/${id}.png`} />
+        </ModalDialog>
+      </Modal>
     </>
   );
 }
