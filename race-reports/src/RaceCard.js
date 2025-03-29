@@ -9,13 +9,26 @@ import {
   Typography,
 } from '@mui/joy';
 
-export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, result, status, itraPoints, itraLink, report }) {
-  const colorMap = {
+export default function RaceCard({
+  id,
+  nameJa,
+  nameEn,
+  date,
+  distance,
+  ascent,
+  result,
+  status,
+  itraPoints,
+  itraLink,
+  report,
+}) {
+  const [open, setOpen] = React.useState(false);
+
+  const statusColorMap = {
     "Finish": "success",
     "DNF": "danger",
-    "TBD": "primary",
+    "Upcoming": "neutral",
   };
-  const [open, setOpen] = React.useState(false);
 
   const handleImageClick = () => {
     setOpen(true);
@@ -27,14 +40,14 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
 
   React.useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape' && open) {
+      if (e.key === "Escape" && open) {
         handleClose();
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [open]);
 
@@ -43,17 +56,17 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
       <Card
         variant="outlined"
         sx={{
-          width: 420,
+          width: 400,
           minHeight: 480,
         }}
       >
         <CardOverflow
           sx={{
-            transition: 'transform 0.2s ease-in-out',
-            '&:hover': {
-              transform: 'scale(1.02)',
+            transition: "transform 0.2s ease-in-out",
+            "&:hover": {
+              transform: "scale(1.02)",
             },
-            position: 'relative',
+            position: "relative",
           }}
         >
           <AspectRatio ratio="2">
@@ -63,33 +76,29 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
               alt=""
               onClick={handleImageClick}
               style={{
-                cursor: 'pointer',
-                width: '100%',
-                height: '100%',
+                cursor: "pointer",
+                width: "100%",
+                height: "100%",
               }}
             />
           </AspectRatio>
         </CardOverflow>
         <CardOverflow>
-          <Typography level="title-md">
-            {nameEn}
-          </Typography>
-          <Typography level="body-sm">
-            {nameJa}
-          </Typography>
+          <Typography level="title-md">{nameEn}</Typography>
+          <Typography level="body-sm">{nameJa}</Typography>
         </CardOverflow>
         <CardContent>
           <Typography level="body-xs" textColor="text.secondary">
             {report}
           </Typography>
         </CardContent>
-        <CardOverflow variant="soft" sx={{ bgcolor: 'background.level1' }}>
+        <CardOverflow variant="soft" sx={{ bgcolor: "background.level1" }}>
           <Divider inset="context" />
           <CardContent orientation="horizontal">
-          <Typography
+            <Typography
               level="body-xs"
               textColor="text.secondary"
-              sx={{ fontWeight: 'md' }}
+              sx={{ fontWeight: "md" }}
             >
               {date}
             </Typography>
@@ -97,7 +106,7 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
             <Typography
               level="body-xs"
               textColor="text.secondary"
-              sx={{ fontWeight: 'md' }}
+              sx={{ fontWeight: "md" }}
             >
               {distance}km
             </Typography>
@@ -105,7 +114,7 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
             <Typography
               level="body-xs"
               textColor="text.secondary"
-              sx={{ fontWeight: 'md' }}
+              sx={{ fontWeight: "md" }}
             >
               +{ascent}m
             </Typography>
@@ -113,7 +122,7 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
             <Typography
               level="body-xs"
               textColor="text.secondary"
-              sx={{ fontWeight: 'md' }}
+              sx={{ fontWeight: "md" }}
             >
               {result}
             </Typography>
@@ -123,7 +132,7 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
                 <Typography
                   level="body-xs"
                   textColor="text.secondary"
-                  sx={{ fontWeight: 'md' }}
+                  sx={{ fontWeight: "md" }}
                 >
                   <a href={itraLink} target="_blank">
                     iTRA {itraPoints}
@@ -133,15 +142,15 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
             ) : null}
             <Chip
               variant="solid"
-              color={colorMap[status] || "neutral"}
+              color={statusColorMap[status] || "neutral"}
               size="sm"
               sx={{
-                position: 'absolute',
+                position: "absolute",
                 zIndex: 2,
-                right: '1rem',
+                right: "1rem",
               }}
             >
-             {status}
+              {status}
             </Chip>
           </CardContent>
         </CardOverflow>
@@ -149,15 +158,15 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
       {open && (
         <div
           style={{
-            position: 'fixed',
+            position: "fixed",
             top: 0,
             left: 0,
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
             zIndex: 1000,
           }}
           onClick={handleClose}
@@ -166,9 +175,9 @@ export default function RaceCard({ id, nameJa, nameEn, date, distance, ascent, r
             src={`/race-reports/raceImages/${id}.png`}
             alt=""
             style={{
-              maxWidth: '90%',
-              maxHeight: '90%',
-              objectFit: 'contain', // Ensures the image scales to fit without losing aspect ratio
+              maxWidth: "90%",
+              maxHeight: "90%",
+              objectFit: "contain", // Ensures the image scales to fit without losing aspect ratio
             }}
           />
         </div>
