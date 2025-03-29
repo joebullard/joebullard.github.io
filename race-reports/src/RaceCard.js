@@ -51,8 +51,8 @@ export default function RaceCard({
       <Card
         variant="outlined"
         sx={{
-          width: 400,
-          minHeight: 480,
+          width: 420,
+          minHeight: 420,
         }}
       >
         <CardOverflow

@@ -3,16 +3,18 @@ import React from 'react';
 import {
   Button,
   Stack,
+  Switch,
   ToggleButtonGroup,
  } from '@mui/joy';
-import RaceGrid from './RaceGrid';
+ import RaceGrid from './RaceGrid';
+ import RaceTable from './RaceTable';
 import races from './assets/races.json';
 
 function App() {
+  const [view, setView] = React.useState('table');
   const [statusFilter, setStatusFilter] = React.useState(null);
   const [yearFilter, setYearFilter] = React.useState(null);
   const [minDistanceFilter, setMinDistanceFilter] = React.useState(0);
-  const [minDistanceCoveredFilter, setMinDistanceCoveredFilter] = React.useState(true);
 
   return (
     <Router basename="/race-reports">
@@ -56,11 +58,29 @@ function App() {
           <Button value={160}>100Mi+</Button>
         </ToggleButtonGroup>
 
-        <RaceGrid
-          statusFilter={statusFilter}
-          yearFilter={yearFilter}
-          minDistanceFilter={minDistanceFilter}
+        <Switch
+          color="neutral"
+          startDecorator="Cards"
+          endDecorator="Table"
+          checked={view === 'table'}
+          onChange={(event) =>
+            setView(event.target.checked ? 'table' : 'cards')
+          }
         />
+
+        {view === 'cards' ? (
+          <RaceGrid
+            statusFilter={statusFilter}
+            yearFilter={yearFilter}
+            minDistanceFilter={minDistanceFilter}
+          />
+        ) : (
+          <RaceTable
+            statusFilter={statusFilter}
+            yearFilter={yearFilter}
+            minDistanceFilter={minDistanceFilter}
+          />
+        )}
       </Stack>
     </Router>
   );
