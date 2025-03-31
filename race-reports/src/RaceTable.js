@@ -1,16 +1,13 @@
 import * as React from 'react';
 import {
-  AspectRatio,
   Avatar,
   Box,
   Link,
-  Modal,
-  ModalClose,
-  ModalDialog,
   Stack,
   Table,
   Typography,
 } from '@mui/joy';
+import ImageModal from './ImageModal';
 import races from './assets/races.json';
 
 export default function RaceTable({ statusFilter, yearFilter, minDistanceFilter }) {
@@ -100,16 +97,11 @@ export default function RaceTable({ statusFilter, yearFilter, minDistanceFilter 
         </tbody>
       </Table>
 
-      <Modal
+      <ImageModal
         open={openImage !== null}
+        src={openImage}
         onClose={() => setOpenImage(null)}
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-      >
-        <ModalDialog layout="center">
-          <ModalClose />
-          <img src={openImage} />
-        </ModalDialog>
-      </Modal>
+      />
     </>
   );
 }

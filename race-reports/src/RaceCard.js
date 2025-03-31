@@ -6,11 +6,9 @@ import {
   CardOverflow,
   Chip,
   Divider,
-  Modal,
-  ModalClose,
-  ModalDialog,
   Typography,
 } from '@mui/joy';
+import ImageModal from './ImageModal';
 
 export default function RaceCard({
   id,
@@ -149,16 +147,11 @@ export default function RaceCard({
         </CardOverflow>
       </Card>
 
-      <Modal
+      <ImageModal
         open={open}
+        src={`/race-reports/raceImages/${id}.png`}
         onClose={() => setOpen(false)}
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-      >
-        <ModalDialog layout="center">
-          <ModalClose />
-          <img src={`/race-reports/raceImages/${id}.png`} />
-        </ModalDialog>
-      </Modal>
+      />
     </>
   );
 }
