@@ -48,6 +48,7 @@ export default function RaceCard({
         variant="outlined"
         sx={{
           width: 420,
+          maxWidth: '80vw',
           minHeight: 420,
         }}
       >
