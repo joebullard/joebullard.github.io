@@ -1,12 +1,10 @@
 import * as React from 'react';
-import {
-  Avatar,
-  Box,
-  Link,
-  Stack,
-  Table,
-  Typography,
-} from '@mui/joy';
+import Avatar from '@mui/joy/Avatar';
+import Box from '@mui/joy/Box';
+import Link from '@mui/joy/Link';
+import Stack from '@mui/joy/Stack';
+import Table from '@mui/joy/Table';
+import Typography from '@mui/joy/Typography';
 import ImageModal from './ImageModal';
 import races from './assets/races.json';
 

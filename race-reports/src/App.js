@@ -1,13 +1,11 @@
 import { BrowserRouter as Router } from 'react-router-dom';
 import React from 'react';
-import {
-  Button,
-  Stack,
-  Switch,
-  ToggleButtonGroup,
- } from '@mui/joy';
- import RaceGrid from './RaceGrid';
- import RaceTable from './RaceTable';
+import Button from '@mui/joy/Button';
+import Stack from '@mui/joy/Stack';
+import Switch from '@mui/joy/Switch';
+import ToggleButtonGroup from '@mui/joy/ToggleButtonGroup';
+import RaceGrid from './RaceGrid';
+import RaceTable from './RaceTable';
 import races from './assets/races.json';
 
 function App() {

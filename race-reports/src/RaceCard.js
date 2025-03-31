@@ -1,13 +1,11 @@
 import * as React from 'react';
-import {
-  AspectRatio,
-  Card,
-  CardContent,
-  CardOverflow,
-  Chip,
-  Divider,
-  Typography,
-} from '@mui/joy';
+import AspectRatio from '@mui/joy/AspectRatio';
+import Card from '@mui/joy/Card';
+import CardContent from '@mui/joy/CardContent';
+import CardOverflow from '@mui/joy/CardOverflow';
+import Chip from '@mui/joy/Chip';
+import Divider from '@mui/joy/Divider';
+import Typography from '@mui/joy/Typography';
 import ImageModal from './ImageModal';
 
 export default function RaceCard({
