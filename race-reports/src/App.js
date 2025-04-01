@@ -1,5 +1,6 @@
 import { BrowserRouter as Router } from 'react-router-dom';
 import React from 'react';
+import {isMobile} from 'react-device-detect';
 import Button from '@mui/joy/Button';
 import Stack from '@mui/joy/Stack';
 import Switch from '@mui/joy/Switch';
@@ -9,7 +10,7 @@ import RaceTable from './RaceTable';
 import races from './assets/races.json';
 
 function App() {
-  const [view, setView] = React.useState('table');
+  const [view, setView] = React.useState(isMobile ? 'cards' : 'table');
   const [statusFilter, setStatusFilter] = React.useState(null);
   const [yearFilter, setYearFilter] = React.useState(null);
   const [minDistanceFilter, setMinDistanceFilter] = React.useState(0);
