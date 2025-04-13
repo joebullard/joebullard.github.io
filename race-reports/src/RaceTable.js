@@ -5,30 +5,14 @@ import Link from '@mui/joy/Link';
 import Stack from '@mui/joy/Stack';
 import Table from '@mui/joy/Table';
 import Typography from '@mui/joy/Typography';
-import ImageModal from './ImageModal';
 import races from './assets/races.json';
 
 export default function RaceTable({ statusFilter, yearFilter, minDistanceFilter }) {
-  const [openImage, setOpenImage] = React.useState(null);
-
   const statusColorMap = {
     "Finish": "success",
     "DNF": "danger",
     "Upcoming": "neutral",
   };
-
-  React.useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape" && openImage) {
-        setOpenImage(null);
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [openImage]);
 
   return (
     <>
@@ -48,7 +32,7 @@ export default function RaceTable({ statusFilter, yearFilter, minDistanceFilter 
             .filter(race => (
               (statusFilter === null || statusFilter === race.status)
               && (yearFilter === null || yearFilter === race.date.substring(0, 4))
-              && (race.coveredDistance >= minDistanceFilter)
+              && (race.raceDistance >= minDistanceFilter)
             ))
             .map(race => (
               <tr>
@@ -62,9 +46,10 @@ export default function RaceTable({ statusFilter, yearFilter, minDistanceFilter 
                         },
                         cursor: "pointer",
                       }}
-                      onClick={() => setOpenImage(`/race-reports/raceImages/${race.id}.png`)}
                     >
-                      <Avatar size="lg" src={`/race-reports/raceImages/${race.id}_thumbnail.png`} />
+                      <a href={race.googlePhotosLink} target="_blank" rel="noreferrer">
+                        <Avatar size="lg" src={`/race-reports/raceImages/${race.id}_thumbnail.png`} />
+                      </a>
                     </Box>
                     <Box>
                       <Typography level="body-md">{race.nameEn}</Typography>
@@ -94,12 +79,6 @@ export default function RaceTable({ statusFilter, yearFilter, minDistanceFilter 
             ))}
         </tbody>
       </Table>
-
-      <ImageModal
-        open={openImage !== null}
-        src={openImage}
-        onClose={() => setOpenImage(null)}
-      />
     </>
   );
 }

@@ -6,7 +6,6 @@ import CardOverflow from '@mui/joy/CardOverflow';
 import Chip from '@mui/joy/Chip';
 import Divider from '@mui/joy/Divider';
 import Typography from '@mui/joy/Typography';
-import ImageModal from './ImageModal';
 
 export default function RaceCard({
   id,
@@ -20,6 +19,7 @@ export default function RaceCard({
   itraPoints,
   itraLink,
   report,
+  googlePhotosLink,
 }) {
   const [open, setOpen] = React.useState(false);
 
@@ -62,17 +62,19 @@ export default function RaceCard({
           }}
         >
           <AspectRatio ratio="2">
-            <img
-              src={`/race-reports/raceImages/${id}_thumbnail.png`}
-              loading="lazy"
-              alt=""
-              onClick={() => setOpen(true)}
-              style={{
-                cursor: "pointer",
-                width: "100%",
-                height: "100%",
-              }}
-            />
+            <a href={googlePhotosLink} target="_blank" rel="noreferrer">
+              <img
+                src={`/race-reports/raceImages/${id}_thumbnail.png`}
+                loading="lazy"
+                alt=""
+                onClick={() => setOpen(true)}
+                style={{
+                  cursor: "pointer",
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
+            </a>
           </AspectRatio>
         </CardOverflow>
         <CardOverflow>
@@ -145,12 +147,6 @@ export default function RaceCard({
           </CardContent>
         </CardOverflow>
       </Card>
-
-      <ImageModal
-        open={open}
-        src={`/race-reports/raceImages/${id}.png`}
-        onClose={() => setOpen(false)}
-      />
     </>
   );
 }

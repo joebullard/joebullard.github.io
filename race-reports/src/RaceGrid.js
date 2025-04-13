@@ -19,7 +19,7 @@ export default function RaceGrid({ statusFilter, yearFilter, minDistanceFilter }
         .filter(race => (
           (statusFilter === null || statusFilter === race.status)
           && (yearFilter === null || yearFilter === race.date.substring(0, 4))
-          && (race.coveredDistance >= minDistanceFilter)
+          && (race.raceDistance >= minDistanceFilter)
         ))
         .map(race => (
           <Grid>
@@ -36,6 +36,7 @@ export default function RaceGrid({ statusFilter, yearFilter, minDistanceFilter }
                 itraPoints={race.itraPoints}
                 itraLink={race.itraLink}
                 report={race.report}
+                googlePhotosLink={race.googlePhotosLink}
             />
           </Grid>
         ))}
