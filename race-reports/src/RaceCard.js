@@ -49,7 +49,7 @@ export default function RaceCard({
         sx={{
           width: 420,
           maxWidth: '80vw',
-          minHeight: 420,
+          // minHeight: 420,
         }}
       >
         <CardOverflow
@@ -79,11 +79,11 @@ export default function RaceCard({
           <Typography level="title-md">{nameEn}</Typography>
           <Typography level="body-sm">{nameJa}</Typography>
         </CardOverflow>
-        <CardContent>
+        {/* <CardContent>
           <Typography level="body-xs" textColor="text.secondary">
             {report}
           </Typography>
-        </CardContent>
+        </CardContent> */}
         <CardOverflow variant="soft" sx={{ bgcolor: "background.level1" }}>
           <Divider inset="context" />
           <CardContent orientation="horizontal">
