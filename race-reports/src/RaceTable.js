@@ -48,7 +48,7 @@ export default function RaceTable({ statusFilter, yearFilter, minDistanceFilter 
                       }}
                     >
                       <a href={race.googlePhotosLink} target="_blank" rel="noreferrer">
-                        <Avatar size="lg" src={`/race-reports/raceImages/${race.id}_thumbnail.png`} />
+                        <Avatar size="lg" src={race.coverPhoto} />
                       </a>
                     </Box>
                     <Box>

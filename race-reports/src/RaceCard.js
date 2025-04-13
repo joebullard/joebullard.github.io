@@ -20,6 +20,7 @@ export default function RaceCard({
   itraLink,
   report,
   googlePhotosLink,
+  coverPhoto,
 }) {
   const [open, setOpen] = React.useState(false);
 
@@ -56,7 +57,7 @@ export default function RaceCard({
           sx={{
             transition: "transform 0.2s ease-in-out",
             "&:hover": {
-              transform: "scale(1.02)",
+              transform: "scale(1.01)",
             },
             position: "relative",
           }}
@@ -64,7 +65,7 @@ export default function RaceCard({
           <AspectRatio ratio="2">
             <a href={googlePhotosLink} target="_blank" rel="noreferrer">
               <img
-                src={`/race-reports/raceImages/${id}_thumbnail.png`}
+                src={coverPhoto}
                 loading="lazy"
                 alt=""
                 onClick={() => setOpen(true)}

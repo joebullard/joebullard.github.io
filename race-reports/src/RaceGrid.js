@@ -37,6 +37,7 @@ export default function RaceGrid({ statusFilter, yearFilter, minDistanceFilter }
                 itraLink={race.itraLink}
                 report={race.report}
                 googlePhotosLink={race.googlePhotosLink}
+                coverPhoto={race.coverPhoto}
             />
           </Grid>
         ))}
