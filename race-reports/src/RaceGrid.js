@@ -3,7 +3,7 @@ import { Grid } from '@mui/joy';
 import RaceCard from './RaceCard';
 import races from './assets/races.json';
 
-export default function RaceGrid({ statusFilter, yearFilter, minDistanceFilter }) {
+export default function RaceGrid({ statusFilter, yearFilter, minDistanceFilter, eventTypeFilter }) {
   return (
     <>
     <Grid
@@ -20,6 +20,7 @@ export default function RaceGrid({ statusFilter, yearFilter, minDistanceFilter }
           (statusFilter === null || statusFilter === race.status)
           && (yearFilter === null || yearFilter === race.date.substring(0, 4))
           && (race.raceDistance >= minDistanceFilter)
+          && (eventTypeFilter === null || race.eventType === eventTypeFilter)
         ))
         .map(race => (
           <Grid>

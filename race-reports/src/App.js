@@ -14,6 +14,7 @@ function App() {
   const [statusFilter, setStatusFilter] = React.useState(null);
   const [yearFilter, setYearFilter] = React.useState(null);
   const [minDistanceFilter, setMinDistanceFilter] = React.useState(0);
+  const [eventType, setEventType] = React.useState(null);
 
   return (
     <Router basename="/race-reports">
@@ -52,9 +53,22 @@ function App() {
           }}
           variant="outlined"
         >
+          <Button value={42.2}>Marathon+</Button>
           <Button value={50}>50K+</Button>
           <Button value={100}>100K+</Button>
           <Button value={160}>100Mi+</Button>
+        </ToggleButtonGroup>
+
+        <ToggleButtonGroup
+          exclusive
+          value={eventType}
+          onChange={(event, eventType) => {
+            setEventType(eventType);
+          }}
+          variant="outlined"
+        >
+          <Button value="self-supported">Self-supported</Button>
+          <Button value="organized">Organized</Button>
         </ToggleButtonGroup>
 
         <Switch
@@ -72,12 +86,14 @@ function App() {
             statusFilter={statusFilter}
             yearFilter={yearFilter}
             minDistanceFilter={minDistanceFilter}
+            eventTypeFilter={eventType}
           />
         ) : (
           <RaceTable
             statusFilter={statusFilter}
             yearFilter={yearFilter}
             minDistanceFilter={minDistanceFilter}
+            eventTypeFilter={eventType}
           />
         )}
       </Stack>

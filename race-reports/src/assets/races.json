@@ -1,6 +1,7 @@
 [
   {
     "id": "2021-12-izu-oshima",
+    "eventType": "organized",
     "prefecture": "Tokyo",
     "nameJa": "第11回 伊豆大島マラソン",
     "nameEn": "11th Izu Oshima Marathon",
@@ -16,6 +17,7 @@
   },
   {
     "id": "2022-05-ishigaki",
+    "eventType": "organized",
     "prefecture": "Okinawa",
     "nameJa": "第8回 石垣島ウルトラマラソン",
     "nameEn": "8th Ishigaki Island Ultramarathon",
@@ -29,7 +31,38 @@
     "googlePhotosLink": "https://photos.app.goo.gl/3uiv4qqEeVSbK6jF7"
   },
   {
+    "id": "2022-10-self-supported-odawara-beachside",
+    "eventType": "self-supported",
+    "prefecture": "Kanagawa",
+    "nameEn": "Odawara Kamakura Beachside Marathon",
+    "nameJa": "Self-supported Training Run",
+    "date": "2022.10.15",
+    "raceDistance": 42.2,
+    "coveredDistance": 42.2,
+    "ascent": 397,
+    "result": "6:17:34",
+    "status": "Finish",
+    "coverPhoto": "/race-reports/placeholder.png",
+    "googlePhotosLink": ""
+  },
+  {
+    "id": "2022-11-self-supported-kokyo-akasaka",
+    "eventType": "self-supported",
+    "prefecture": "Tokyo",
+    "nameEn": "Kokyo Akasaka Guruguru Palace Marathon",
+    "nameJa": "Self-supported Training Run",
+    "date": "2022.11.12",
+    "raceDistance": 42.2,
+    "coveredDistance": 42.2,
+    "ascent": 1245,
+    "result": "5:24:52",
+    "status": "Finish",
+    "coverPhoto": "/race-reports/placeholder.png",
+    "googlePhotosLink": ""
+  },
+  {
     "id": "2022-12-okinawa",
+    "eventType": "organized",
     "prefecture": "Okinawa",
     "nameJa": "第5回 沖縄100Kウルトラマラソン",
     "nameEn": "5th Okinawa 100K Ultramarathon",
@@ -44,6 +77,7 @@
   },
   {
     "id": "2023-05-michikusa-miura",
+    "eventType": "organized",
     "prefecture": "Kanagawa",
     "nameJa": "第8回 横須賀・三浦100km・63kmみちくさウルトラマラソン",
     "nameEn": "8th Yokosuka Miura Michikusa Ultramarathon",
@@ -58,6 +92,7 @@
   },
   {
     "id": "2023-11-michikusa-minami-izu",
+    "eventType": "organized",
     "prefecture": "Shizuoka",
     "nameJa": "第10回南伊豆町100km78km66kmみちくさウルトラマラソン",
     "nameEn": "10th Minami Izu Town Michikusa Ultramarathon",
@@ -72,6 +107,7 @@
   },
   {
     "id": "2023-12-okinawa",
+    "eventType": "organized",
     "prefecture": "Okinawa",
     "nameJa": "第6回 沖縄100Kウルトラマラソン",
     "nameEn": "6th Okinawa 100K Ultramarathon",
@@ -86,6 +122,7 @@
   },
   {
     "id": "2024-03-michikusa-minami-boso",
+    "eventType": "organized",
     "prefecture": "Chiba",
     "nameJa": "第8回南房総100km75kmみちくさウルトラマラソン",
     "nameEn": "8th Minami Boso Michikusa Ultramarathon",
@@ -100,6 +137,7 @@
   },
   {
     "id": "2024-04-atsumi",
+    "eventType": "organized",
     "prefecture": "Aichi",
     "nameJa": "第3回渥美半島ウルトラネイチャーラン",
     "nameEn": "3rd Atsumi Peninsula Ultra Nature Run",
@@ -114,6 +152,7 @@
   },
   {
     "id": "2024-05-nobeyama",
+    "eventType": "organized",
     "prefecture": "Nagano",
     "nameJa": "第30回 星の郷八ヶ岳野辺山高原100kmウルトラマラソン",
     "nameEn": "30th Nobeyama Ultramarathon",
@@ -128,6 +167,7 @@
   },
   {
     "id": "2024-06-rockin-bear",
+    "eventType": "organized",
     "prefecture": "Niigata",
     "nameJa": "“ROCKIN’ BEAR” 妙高トレイルランニングレース",
     "nameEn": "Rockin' Bear Myoko Trail Race",
@@ -144,6 +184,7 @@
   },
   {
     "id": "2024-08-ishioka",
+    "eventType": "organized",
     "prefecture": "Ibaraki",
     "nameJa": "第11回筑波連山天空ロード＆トレイルランinいしおか",
     "nameEn": "11th Tsukuba Sky Road & Trail Run in Ishioka",
@@ -158,6 +199,7 @@
   },
   {
     "id": "2024-10-iki",
+    "eventType": "organized",
     "prefecture": "Nagasaki",
     "nameJa": "神々の島壱岐ウルトラマラソン2024",
     "nameEn": "Island of the Gods - Iki Ultramarathon 2024",
@@ -172,6 +214,7 @@
   },
   {
     "id": "2024-12-boso-coast-to-coast",
+    "eventType": "organized",
     "prefecture": "Chiba",
     "nameJa": "2024房総半島横断レース",
     "nameEn": "Boso Peninsula Coast to Coast 2024",
@@ -188,9 +231,10 @@
   },
   {
     "id": "2025-03-self-supported-okutama-50",
+    "eventType": "self-supported",
     "prefecture": "Tokyo",
-    "nameEn": "Self-supported 50k in Oku-tama",
-    "nameJa": "Training for Tokyo Grand Trail 2025",
+    "nameEn": "50k in Oku-tama",
+    "nameJa": "Self-supported Training Run",
     "date": "2025.03.14",
     "raceDistance": 50,
     "coveredDistance": 50,
@@ -201,7 +245,23 @@
     "googlePhotosLink": "https://photos.app.goo.gl/WGJGDjtWAyXf4boz8"
   },
   {
+    "id": "2025-04-self-supported-sagamiko-marathon",
+    "eventType": "self-supported",
+    "prefecture": "Kanagawa",
+    "nameEn": "Sagamiko Marathon",
+    "nameJa": "Self-supported Training Run",
+    "date": "2025.04.19",
+    "raceDistance": 43,
+    "coveredDistance": 43,
+    "ascent": 2400,
+    "result": "8:44:44",
+    "status": "Finish",
+    "coverPhoto": "https://lh3.googleusercontent.com/pw/AP1GczObsh59HSCS7JcN-cXKQ1NiRWNHkgFG43G-a16dj7x_UDDki0wOv8X8x7f3BmW4HObfzBLFms0wfcHEY5vkh85P1DVBMco2GFBiVyeGrwlzFB0T4it25wnEjXhbn8CjXT9GzKgXYizSLX2J5Yyznmwl=w2410-h1808-s-no-gm?authuser=0",
+    "googlePhotosLink": "https://photos.app.goo.gl/EWi2ZH2MRerWbP3t8"
+  },
+  {
     "id": "2025-05-tokyo-grand-trail",
+    "eventType": "organized",
     "prefecture": "Tokyo",
     "nameEn": "Tokyo Grand Trail 2025",
     "nameJa": "Tokyo Grand Trail 2025",

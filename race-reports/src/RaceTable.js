@@ -7,7 +7,7 @@ import Table from '@mui/joy/Table';
 import Typography from '@mui/joy/Typography';
 import races from './assets/races.json';
 
-export default function RaceTable({ statusFilter, yearFilter, minDistanceFilter }) {
+export default function RaceTable({ statusFilter, yearFilter, minDistanceFilter, eventTypeFilter }) {
   const statusColorMap = {
     "Finish": "success",
     "DNF": "danger",
@@ -33,6 +33,7 @@ export default function RaceTable({ statusFilter, yearFilter, minDistanceFilter 
               (statusFilter === null || statusFilter === race.status)
               && (yearFilter === null || yearFilter === race.date.substring(0, 4))
               && (race.raceDistance >= minDistanceFilter)
+              && (eventTypeFilter === null || race.eventType === eventTypeFilter)
             ))
             .map(race => (
               <tr>
