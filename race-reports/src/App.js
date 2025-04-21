@@ -53,7 +53,6 @@ function App() {
           }}
           variant="outlined"
         >
-          <Button value={42.2}>Marathon+</Button>
           <Button value={50}>50K+</Button>
           <Button value={100}>100K+</Button>
           <Button value={160}>100Mi+</Button>

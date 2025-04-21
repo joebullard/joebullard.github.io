@@ -5,6 +5,7 @@ import CardContent from '@mui/joy/CardContent';
 import CardOverflow from '@mui/joy/CardOverflow';
 import Chip from '@mui/joy/Chip';
 import Divider from '@mui/joy/Divider';
+import Link from '@mui/joy/Link';
 import Typography from '@mui/joy/Typography';
 
 export default function RaceCard({
@@ -50,7 +51,6 @@ export default function RaceCard({
         sx={{
           width: 420,
           maxWidth: '80vw',
-          // minHeight: 420,
         }}
       >
         <CardOverflow
@@ -81,15 +81,22 @@ export default function RaceCard({
         <CardOverflow>
           <Typography level="title-md">{nameEn}</Typography>
           <Typography level="body-sm">{nameJa}</Typography>
+          <Chip
+              variant="solid"
+              color={statusColorMap[status] || "neutral"}
+              size="sm"
+              sx={{
+                position: "absolute",
+                zIndex: 2,
+                right: "1rem",
+              }}
+            >
+              {status}
+            </Chip>
         </CardOverflow>
-        {/* <CardContent>
-          <Typography level="body-xs" textColor="text.secondary">
-            {report}
-          </Typography>
-        </CardContent> */}
         <CardOverflow variant="soft" sx={{ bgcolor: "background.level1" }}>
           <Divider inset="context" />
-          <CardContent orientation="horizontal">
+          <CardContent orientation="horizontal" sx={{ alignItems: "center" }}>
             <Typography
               level="body-xs"
               textColor="text.secondary"
@@ -124,27 +131,18 @@ export default function RaceCard({
             {itraPoints ? (
               <>
                 <Divider orientation="vertical" />
-                <Typography
-                  level="body-xs"
-                  textColor="text.secondary"
-                  sx={{ fontWeight: "md" }}
-                >
-                  <a href={itraLink} target="_blank">iTRA {itraPoints}</a>
-                </Typography>
+                <Link href={itraLink} target="_blank">
+                  <img
+                    style={{
+                      height: "100%",
+                      maxHeight: "1.5rem", // Bound the image height by CardContent height
+                    }}
+                    src={`/race-reports/iTRA${itraPoints || 0}.svg`}
+                    alt={`iTRA Points: ${itraPoints}`}
+                  />
+                </Link>
               </>
             ) : null}
-            <Chip
-              variant="solid"
-              color={statusColorMap[status] || "neutral"}
-              size="sm"
-              sx={{
-                position: "absolute",
-                zIndex: 2,
-                right: "1rem",
-              }}
-            >
-              {status}
-            </Chip>
           </CardContent>
         </CardOverflow>
       </Card>
