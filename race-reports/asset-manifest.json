@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/race-reports/static/css/main.233ddbce.css",
-    "main.js": "/race-reports/static/js/main.92913087.js",
+    "main.js": "/race-reports/static/js/main.09a6b070.js",
     "static/media/inter-latin-ext-400-normal.woff": "/race-reports/static/media/inter-latin-ext-400-normal.1c20f7dc20d731a18fcd.woff",
     "static/media/inter-latin-400-normal.woff": "/race-reports/static/media/inter-latin-400-normal.b0c8fe9db56dd415a25a.woff",
     "static/media/inter-latin-ext-400-normal.woff2": "/race-reports/static/media/inter-latin-ext-400-normal.3d10c85fbd16969509a2.woff2",
@@ -18,10 +18,10 @@
     "static/media/inter-vietnamese-400-normal.woff2": "/race-reports/static/media/inter-vietnamese-400-normal.44c9df135eec470b0ab6.woff2",
     "index.html": "/race-reports/index.html",
     "main.233ddbce.css.map": "/race-reports/static/css/main.233ddbce.css.map",
-    "main.92913087.js.map": "/race-reports/static/js/main.92913087.js.map"
+    "main.09a6b070.js.map": "/race-reports/static/js/main.09a6b070.js.map"
   },
   "entrypoints": [
     "static/css/main.233ddbce.css",
-    "static/js/main.92913087.js"
+    "static/js/main.09a6b070.js"
   ]
 }
