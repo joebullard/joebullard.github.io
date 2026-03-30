@@ -275,5 +275,39 @@
     "googlePhotosLink": "",
     "itraPoints": 6,
     "itraLink": "https://itra.run/Races/RaceDetails/Tokyo.Grand.Trail.100mile/2025/100353"
+  },
+  {
+    "id": "2025-09-sky-view-80",
+    "eventType": "organized",
+    "prefecture": "Gunma",
+    "nameEn": "Joshu Hotaka Sky View Trail 80K",
+    "nameJa": "上州武尊スカイビュートレイル80K",
+    "date": "2025.09.20",
+    "raceDistance": 80,
+    "coveredDistance": 80,
+    "ascent": 3970,
+    "result": "17:33",
+    "status": "Finish",
+    "coverPhoto": "https://lh3.googleusercontent.com/pw/AP1GczN3a2buUNaDzr6R-BlSg7SCUDiiw35Z8uiewxCgLpsPcw4DbjsiiWq6Zo5AldXtZc_oThJeB0HhnvTnAMHaT0UUAX5Dh6PiwidbusSOPAeTNN_jVrhpsafIuS4uT5fPlwATeSuTN4ORoDatUDYaKK7o=w627-h836-s-no-gm?authuser=0",
+    "googlePhotosLink": "https://photos.fife.usercontent.google.com/pw/AP1GczM1eS0VehNzCDbfudzn9TU_aTsHt1dhdoodk4rtJSWKbfurNIRvbZzf=w627-h836-s-no-gm?authuser=0",
+    "itraPoints": 4,
+    "itraLink": "https://itra.run/Races/RaceDetails/101027"
+  },
+  {
+    "id": "2025-10-shiga-kogen-extreme-trail-55",
+    "eventType": "organized",
+    "prefecture": "Nagano",
+    "nameEn": "Shiga Kogen Extreme Trail 55K",
+    "nameJa": "志賀高原エクストリームトレイル55K",
+    "date": "2025.10.19",
+    "raceDistance": 55,
+    "coveredDistance": 55,
+    "ascent": 2817,
+    "result": "12:01:42",
+    "status": "Finish",
+    "coverPhoto": "https://lh3.googleusercontent.com/pw/AP1GczN3a2buUNaDzr6R-BlSg7SCUDiiw35Z8uiewxCgLpsPcw4DbjsiiWq6Zo5AldXtZc_oThJeB0HhnvTnAMHaT0UUAX5Dh6PiwidbusSOPAeTNN_jVrhpsafIuS4uT5fPlwATeSuTN4ORoDatUDYaKK7o=w627-h836-s-no-gm?authuser=0",
+    "googlePhotosLink": "https://photos.fife.usercontent.google.com/pw/AP1GczM1eS0VehNzCDbfudzn9TU_aTsHt1dhdoodk4rtJSWKbfurNIRvbZzf=w627-h836-s-no-gm?authuser=0",
+    "itraPoints": 3,
+    "itraLink": "https://itra.run/Races/RaceDetails/106931"
   }
 ]
