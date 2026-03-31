@@ -9,7 +9,7 @@ function App() {
   const [selectedPrefecture, setSelectedPrefecture] = React.useState(null);
 
   return (
-    <Stack spacing={2} sx={{ alignItems: 'center', px: 2, py: 3 }}>
+    <Stack spacing={2} sx={{ alignItems: 'center', px: { xs: 1, sm: 2 }, py: 3, overflowX: 'hidden', width: '100%' }}>
       <Typography level="h2">Race Reports</Typography>
       <Typography level="body-sm" textColor="text.secondary">
         {selectedPrefecture
