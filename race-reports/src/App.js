@@ -16,7 +16,7 @@ function App() {
   const [eventType, setEventType] = React.useState(null);
 
   return (
-    <Router basename="/race-reports">
+    <Router basename={process.env.PUBLIC_URL || "/race-reports"}>
       <Stack spacing={2} sx={{ alignItems: "center" }}>
         <ToggleButtonGroup
           exclusive
