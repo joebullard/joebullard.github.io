@@ -22,24 +22,24 @@ function toShortName(topoName) {
 
 const racedPrefectures = new Set(races.map(r => toTopoName(r.prefecture)));
 
-// Pre-group races by prefecture for tooltip lookup
 const racesByPrefecture = races.reduce((acc, r) => {
   (acc[r.prefecture] = acc[r.prefecture] || []).push(r);
   return acc;
 }, {});
+
+// Tooltips only make sense on devices with a real pointer (not touch)
+const SUPPORTS_HOVER =
+  typeof window !== 'undefined' &&
+  window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 const COLOR_RACED    = '#4a90d9';
 const COLOR_SELECTED = '#1a56a0';
 const COLOR_UNRACED  = '#d8d8d8';
 const COLOR_HOVER    = '#74b0e8';
 
-const STATUS_COLORS = {
-  'Finish':   '#2e7d32',
-  'DNF':      '#c62828',
-  'Upcoming': '#888',
-};
+const STATUS_COLORS = { 'Finish': '#2e7d32', 'DNF': '#c62828', 'Upcoming': '#888' };
 
-function PrefectureGeographies({ geographies, selected, onSelect, onHover, onHoverEnd, onMove, filterFn }) {
+function PrefectureGeographies({ geographies, selected, onSelect, onHover, onHoverEnd, onMove, filterFn, noClick }) {
   return geographies.filter(filterFn).map((geo) => {
     const topoName   = geo.properties.nam;
     const isRaced    = racedPrefectures.has(topoName);
@@ -61,25 +61,23 @@ function PrefectureGeographies({ geographies, selected, onSelect, onHover, onHov
           pressed: { fill: COLOR_SELECTED, outline: 'none' },
           default: { outline: 'none' },
         }}
-        onClick={() => {
+        onClick={noClick ? undefined : () => {
           if (!isRaced) return;
           const shortName = toShortName(topoName);
           onSelect(selected === shortName ? null : shortName);
         }}
-        onMouseEnter={(evt) => onHover(toShortName(topoName), evt.clientX, evt.clientY)}
-        onMouseMove={(evt)  => onMove(evt.clientX, evt.clientY)}
-        onMouseLeave={onHoverEnd}
+        onMouseEnter={SUPPORTS_HOVER ? (evt) => onHover(toShortName(topoName), evt.clientX, evt.clientY) : undefined}
+        onMouseMove={SUPPORTS_HOVER  ? (evt) => onMove(evt.clientX, evt.clientY) : undefined}
+        onMouseLeave={SUPPORTS_HOVER ? onHoverEnd : undefined}
       />
     );
   });
 }
 
 function Tooltip({ tooltip }) {
-  if (!tooltip) return null;
+  if (!tooltip || !SUPPORTS_HOVER) return null;
   const { name, x, y } = tooltip;
   const prefRaces = racesByPrefecture[name] || [];
-
-  // Flip to the left if near the right edge
   const flipLeft = x > window.innerWidth - 220;
 
   return (
@@ -97,20 +95,14 @@ function Tooltip({ tooltip }) {
       minWidth: 160,
       maxWidth: 220,
     }}>
-      <div style={{ fontWeight: 700, fontSize: 13, marginBottom: prefRaces.length ? 6 : 0 }}>
-        {name}
-      </div>
+      <div style={{ fontWeight: 700, fontSize: 13, marginBottom: prefRaces.length ? 6 : 0 }}>{name}</div>
       {prefRaces.map(r => (
         <div key={r.id} style={{ fontSize: 12, display: 'flex', justifyContent: 'space-between', gap: 8, lineHeight: 1.6 }}>
           <span style={{ color: '#333' }}>{r.nameEn}</span>
-          <span style={{ color: STATUS_COLORS[r.status] || '#888', fontWeight: 600, whiteSpace: 'nowrap' }}>
-            {r.status}
-          </span>
+          <span style={{ color: STATUS_COLORS[r.status] || '#888', fontWeight: 600, whiteSpace: 'nowrap' }}>{r.status}</span>
         </div>
       ))}
-      {!prefRaces.length && (
-        <div style={{ fontSize: 12, color: '#999' }}>No races</div>
-      )}
+      {!prefRaces.length && <div style={{ fontSize: 12, color: '#999' }}>No races</div>}
     </div>
   );
 }
@@ -118,16 +110,17 @@ function Tooltip({ tooltip }) {
 export default function JapanMap({ selected, onSelect }) {
   const [tooltip, setTooltip] = React.useState(null);
 
-  const handleHover  = (name, x, y) => setTooltip({ name, x, y });
-  const handleMove   = (x, y) => setTooltip(t => t ? { ...t, x, y } : null);
+  const handleHover    = (name, x, y) => setTooltip({ name, x, y });
+  const handleMove     = (x, y) => setTooltip(t => t ? { ...t, x, y } : null);
   const handleHoverEnd = () => setTooltip(null);
 
   const sharedProps = { selected, onSelect, onHover: handleHover, onMove: handleMove, onHoverEnd: handleHoverEnd };
+  const okinawaIsRaced = racedPrefectures.has('Okinawa Ken');
 
   return (
     <>
       <Tooltip tooltip={tooltip} />
-      <div style={{ position: 'relative', width: '100%', maxWidth: 860 }}>
+      <div style={{ position: 'relative', width: '100%', maxWidth: 860, overflow: 'hidden' }}>
 
         {/* Main map — all prefectures except Okinawa */}
         <ComposableMap
@@ -148,29 +141,39 @@ export default function JapanMap({ selected, onSelect }) {
           </Geographies>
         </ComposableMap>
 
-        {/* Okinawa inset — bottom right, zoomed in to make islands clickable */}
-        <div style={{
-          position: 'absolute',
-          bottom: '3%',
-          right: '2%',
-          width: '24%',
-          border: '1.5px solid #aaa',
-          borderRadius: 4,
-          background: 'white',
-          padding: 2,
-        }}>
+        {/* Okinawa inset — bottom right.
+            The entire box is the click/tap target so small islands are easy to tap on mobile. */}
+        <div
+          onClick={() => {
+            if (!okinawaIsRaced) return;
+            onSelect(selected === 'Okinawa' ? null : 'Okinawa');
+          }}
+          style={{
+            position: 'absolute',
+            bottom: '3%',
+            right: '2%',
+            width: '24%',
+            border: `1.5px solid ${selected === 'Okinawa' ? '#1a56a0' : '#aaa'}`,
+            borderRadius: 4,
+            background: selected === 'Okinawa' ? '#e8f0fb' : 'white',
+            padding: 2,
+            cursor: okinawaIsRaced ? 'pointer' : 'default',
+            transition: 'border-color 0.15s, background 0.15s',
+          }}
+        >
           <ComposableMap
             projection="geoMercator"
             projectionConfig={{ center: [127.8, 26.3], scale: 3600 }}
             width={240}
             height={150}
-            style={{ width: '100%', height: 'auto', display: 'block' }}
+            style={{ width: '100%', height: 'auto', display: 'block', pointerEvents: 'none' }}
           >
             <Geographies geography={GEO_URL}>
               {({ geographies }) => (
                 <PrefectureGeographies
                   geographies={geographies}
                   filterFn={geo => geo.properties.nam === 'Okinawa Ken'}
+                  noClick
                   {...sharedProps}
                 />
               )}

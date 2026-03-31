@@ -33,8 +33,8 @@ export default function RaceCard({
     <Card
       variant="outlined"
       sx={{
-        width: 380,
-        maxWidth: '90vw',
+        width: { xs: '100%', sm: 380 },
+        maxWidth: { xs: '100%', sm: 380 },
         overflow: 'hidden',
         transition: 'box-shadow 0.2s',
         '&:hover': { boxShadow: 'md' },

@@ -10,7 +10,7 @@ export default function RaceGrid({ prefectureFilter }) {
     <Grid
       container
       spacing={2}
-      sx={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}
+      sx={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center', width: '100%', px: { xs: 0, sm: 1 } }}
     >
       {filtered.map(race => (
         <Grid key={race.id}>
