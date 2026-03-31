@@ -64,10 +64,10 @@ export default function RaceTable({ statusFilter, yearFilter, minDistanceFilter,
                 <td>
                   {race.itraPoints ? (
                     <Link href={race.itraLink} target="_blank">
-                      <img src={`/race-reports/iTRA${race.itraPoints || 0}.svg`} />
+                      <img src={`/race-reports/iTRA${race.itraPoints || 0}.svg`} alt={`ITRA ${race.itraPoints} points`} />
                     </Link>
                     ) : (
-                    <img src="/race-reports/iTRA0.svg" />
+                    <img src="/race-reports/iTRA0.svg" alt="" />
                   )}
                 </td>
                 <td>
