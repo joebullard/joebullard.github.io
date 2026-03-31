@@ -1,0 +1,41 @@
+name: Deploy Staging
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - gh-pages
+  workflow_dispatch:
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: race-reports/package-lock.json
+
+      - name: Install dependencies
+        working-directory: race-reports
+        run: npm ci
+
+      - name: Build
+        working-directory: race-reports
+        env:
+          PUBLIC_URL: /staging/race-reports
+        run: npm run build
+
+      - name: Deploy to staging
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: race-reports/build
+          destination_dir: staging/race-reports
+          keep_files: true
