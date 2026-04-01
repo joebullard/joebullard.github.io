@@ -309,5 +309,22 @@
     "googlePhotosLink": "https://photos.fife.usercontent.google.com/pw/AP1GczM1eS0VehNzCDbfudzn9TU_aTsHt1dhdoodk4rtJSWKbfurNIRvbZzf=w627-h836-s-no-gm?authuser=0",
     "itraPoints": 3,
     "itraLink": "https://itra.run/Races/RaceDetails/106931"
+  },
+  {
+    "id": "2026-03-onagawa-trails-100",
+    "eventType": "organized",
+    "prefecture": "Miyagi",
+    "nameEn": "Onagawa 100 Trails",
+    "nameJa": "女川100 TRAILS",
+    "date": "2026.03.06",
+    "raceDistance": 165,
+    "coveredDistance": 132,
+    "ascent": 6000,
+    "result": "30:16:34",
+    "status": "Special Finish",
+    "coverPhoto": "https://lh3.googleusercontent.com/pw/AP1GczN3a2buUNaDzr6R-BlSg7SCUDiiw35Z8uiewxCgLpsPcw4DbjsiiWq6Zo5AldXtZc_oThJeB0HhnvTnAMHaT0UUAX5Dh6PiwidbusSOPAeTNN_jVrhpsafIuS4uT5fPlwATeSuTN4ORoDatUDYaKK7o=w627-h836-s-no-gm?authuser=0",
+    "googlePhotosLink": "https://photos.fife.usercontent.google.com/pw/AP1GczM1eS0VehNzCDbfudzn9TU_aTsHt1dhdoodk4rtJSWKbfurNIRvbZzf=w627-h836-s-no-gm?authuser=0",
+    "itraPoints": 5,
+    "itraLink": "https://itra.run/Races/RaceDetails/114568"
   }
 ]

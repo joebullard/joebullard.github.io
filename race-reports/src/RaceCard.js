@@ -104,7 +104,7 @@ export default function RaceCard({
           </Stack>
         </CardContent>
 
-        {report && (
+        {/* {report && (
           <>
             <Divider inset="context" />
             <CardContent sx={{ pb: 1 }}>
@@ -113,7 +113,7 @@ export default function RaceCard({
               </Typography>
             </CardContent>
           </>
-        )}
+        )} */}
       </CardOverflow>
     </Card>
   );
