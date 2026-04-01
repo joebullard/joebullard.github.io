@@ -37,7 +37,7 @@ const COLOR_SELECTED = '#1a56a0';
 const COLOR_UNRACED  = '#d8d8d8';
 const COLOR_HOVER    = '#74b0e8';
 
-const STATUS_COLORS = { 'Finish': '#2e7d32', 'DNF': '#c62828', 'Upcoming': '#888' };
+const STATUS_COLORS = { 'Finish': '#2e7d32', 'Special Finish': '#b45309', 'DNF': '#c62828', 'Upcoming': '#888' };
 
 function PrefectureGeographies({ geographies, selected, onSelect, onHover, onHoverEnd, onMove, filterFn, noClick }) {
   return geographies.filter(filterFn).map((geo) => {

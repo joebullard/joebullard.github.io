@@ -10,9 +10,10 @@ import Stack from '@mui/joy/Stack';
 import Typography from '@mui/joy/Typography';
 
 const statusColorMap = {
-  'Finish':   'success',
-  'DNF':      'danger',
-  'Upcoming': 'neutral',
+  'Finish':         'success',
+  'Special Finish': 'warning',
+  'DNF':            'danger',
+  'Upcoming':       'neutral',
 };
 
 export default function RaceCard({
@@ -88,7 +89,7 @@ export default function RaceCard({
             <Typography
               level="body-sm"
               fontWeight="lg"
-              textColor={status === 'DNF' ? 'danger.500' : status === 'Upcoming' ? 'text.secondary' : 'success.600'}
+              textColor={status === 'DNF' ? 'danger.500' : status === 'Upcoming' ? 'text.secondary' : status === 'Special Finish' ? 'warning.600' : 'success.600'}
             >
               {result}
             </Typography>

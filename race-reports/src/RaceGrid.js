@@ -4,7 +4,10 @@ import RaceCard from './RaceCard';
 import races from './assets/races.json';
 
 export default function RaceGrid({ prefectureFilter }) {
-  const filtered = races.filter(race => race.prefecture === prefectureFilter);
+  const filtered = (prefectureFilter
+    ? races.filter(race => race.prefecture === prefectureFilter)
+    : [...races]
+  ).reverse();
 
   return (
     <Box
