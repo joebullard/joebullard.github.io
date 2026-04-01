@@ -16,8 +16,8 @@ function App() {
           ? `Races in ${selectedPrefecture} — click again to show all`
           : 'Click a highlighted prefecture to filter races'}
       </Typography>
-      <StatsPanel />
       <JapanMap selected={selectedPrefecture} onSelect={setSelectedPrefecture} />
+      <StatsPanel />
       <RaceGrid prefectureFilter={selectedPrefecture} />
     </Stack>
   );

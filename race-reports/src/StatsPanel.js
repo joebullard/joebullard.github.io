@@ -5,7 +5,7 @@ import Typography from '@mui/joy/Typography';
 import races from './assets/races.json';
 
 const completed = races.filter(r => r.status !== 'Upcoming');
-const finishes  = completed.filter(r => r.status === 'Finish');
+const finishes  = completed.filter(r => r.status === 'Finish' || r.status === 'Special Finish');
 
 const totalKm     = races.reduce((sum, r) => sum + r.coveredDistance, 0);
 const totalAscent = races.reduce((sum, r) => sum + Number(r.ascent), 0);
@@ -15,8 +15,8 @@ const finishRate  = Math.round((finishes.length / completed.length) * 100);
 const stats = [
   { label: 'Races',        value: races.length },
   { label: 'Prefectures',  value: `${prefectures} / 47` },
-  { label: 'Km covered',   value: `${totalKm.toLocaleString()} km` },
-  { label: 'Total ascent', value: `+${totalAscent.toLocaleString()} m` },
+  { label: 'km covered',   value: totalKm.toLocaleString() },
+  { label: 'm ascent',     value: `+${totalAscent.toLocaleString()}` },
   { label: 'Finish rate',  value: `${finishRate}%` },
 ];
 
