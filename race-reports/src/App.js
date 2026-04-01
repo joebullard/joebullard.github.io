@@ -3,6 +3,7 @@ import Stack from '@mui/joy/Stack';
 import Typography from '@mui/joy/Typography';
 import JapanMap from './JapanMap';
 import RaceGrid from './RaceGrid';
+import StatsPanel from './StatsPanel';
 
 function App() {
   const [selectedPrefecture, setSelectedPrefecture] = React.useState(null);
@@ -15,6 +16,7 @@ function App() {
           ? `Races in ${selectedPrefecture} — click again to show all`
           : 'Click a highlighted prefecture to filter races'}
       </Typography>
+      <StatsPanel />
       <JapanMap selected={selectedPrefecture} onSelect={setSelectedPrefecture} />
       <RaceGrid prefectureFilter={selectedPrefecture} />
     </Stack>
