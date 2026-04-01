@@ -20,7 +20,10 @@ function toShortName(topoName) {
     ?? topoName.replace(/ (Ken|Fu|Do|To)$/, '');
 }
 
-const racedPrefectures = new Set(races.map(r => toTopoName(r.prefecture)));
+const racedPrefectures   = new Set(races.map(r => toTopoName(r.prefecture)));
+const racedPrefectureNames = new Set(races.map(r => r.prefecture));
+const RACE_COUNT         = races.length;
+const PREFECTURE_COUNT   = racedPrefectureNames.size;
 
 const racesByPrefecture = races.reduce((acc, r) => {
   (acc[r.prefecture] = acc[r.prefecture] || []).push(r);
@@ -140,6 +143,30 @@ export default function JapanMap({ selected, onSelect }) {
             )}
           </Geographies>
         </ComposableMap>
+
+        {/* Stats overlay — sits in the right-side whitespace above the Okinawa inset */}
+        <div style={{
+          position: 'absolute',
+          bottom: '27%',
+          right: '2%',
+          width: '24%',
+          textAlign: 'center',
+          pointerEvents: 'none',
+        }}>
+          {[
+            { value: RACE_COUNT,                      label: 'races' },
+            { value: `${PREFECTURE_COUNT} / 47`,      label: 'prefectures' },
+          ].map(({ value, label }) => (
+            <div key={label} style={{ marginBottom: '0.75rem' }}>
+              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: COLOR_RACED, lineHeight: 1.1 }}>
+                {value}
+              </div>
+              <div style={{ fontSize: '0.65rem', color: '#888', marginTop: 2 }}>
+                {label}
+              </div>
+            </div>
+          ))}
+        </div>
 
         {/* Okinawa inset — bottom right.
             The entire box is the click/tap target so small islands are easy to tap on mobile. */}
