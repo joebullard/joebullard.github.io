@@ -9,7 +9,7 @@ function App() {
 
   return (
     <Stack spacing={2} sx={{ alignItems: 'center', px: { xs: 1, sm: 2 }, py: 3 }}>
-      <Typography level="h2">Race Reports</Typography>
+      <Typography level="h2">Joe's Japan Races</Typography>
       <Typography level="body-sm" textColor="text.secondary">
         {selectedPrefecture
           ? `Races in ${selectedPrefecture} — click again to show all`
