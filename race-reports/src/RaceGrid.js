@@ -3,11 +3,13 @@ import Box from '@mui/joy/Box';
 import RaceCard from './RaceCard';
 import races from './assets/races.json';
 
-export default function RaceGrid({ prefectureFilter }) {
+export default function RaceGrid({ prefectureFilter, showSelfSupported }) {
   const filtered = (prefectureFilter
     ? races.filter(race => race.prefecture === prefectureFilter)
     : [...races]
-  ).reverse();
+  )
+    .filter(race => showSelfSupported || race.eventType !== 'self-supported')
+    .reverse();
 
   return (
     <Box
