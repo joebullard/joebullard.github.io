@@ -32,6 +32,5 @@ function App() {
     </Stack>
   );
 }
-}
 
 export default App;
