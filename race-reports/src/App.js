@@ -17,7 +17,7 @@ function App() {
           ? `Races in ${selectedPrefecture} — click again to show all`
           : 'Click a highlighted prefecture to filter races'}
       </Typography>
-      <JapanMap selected={selectedPrefecture} onSelect={setSelectedPrefecture} />
+      <JapanMap selected={selectedPrefecture} onSelect={setSelectedPrefecture} showSelfSupported={showSelfSupported} />
       <Switch
         size="sm"
         checked={showSelfSupported}

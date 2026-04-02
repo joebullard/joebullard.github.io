@@ -20,16 +20,6 @@ function toShortName(topoName) {
     ?? topoName.replace(/ (Ken|Fu|Do|To)$/, '');
 }
 
-const racedPrefectures   = new Set(races.map(r => toTopoName(r.prefecture)));
-const racedPrefectureNames = new Set(races.map(r => r.prefecture));
-const RACE_COUNT         = races.length;
-const PREFECTURE_COUNT   = racedPrefectureNames.size;
-
-const racesByPrefecture = races.reduce((acc, r) => {
-  (acc[r.prefecture] = acc[r.prefecture] || []).push(r);
-  return acc;
-}, {});
-
 // Tooltips only make sense on devices with a real pointer (not touch)
 const SUPPORTS_HOVER =
   typeof window !== 'undefined' &&
@@ -42,7 +32,7 @@ const COLOR_HOVER    = '#74b0e8';
 
 const STATUS_COLORS = { 'Finish': '#2e7d32', 'Special Finish': '#b45309', 'DNF': '#c62828', 'Upcoming': '#888' };
 
-function PrefectureGeographies({ geographies, selected, onSelect, onHover, onHoverEnd, onMove, filterFn, noClick }) {
+function PrefectureGeographies({ geographies, selected, onSelect, onHover, onHoverEnd, onMove, filterFn, noClick, racedPrefectures }) {
   return geographies.filter(filterFn).map((geo) => {
     const topoName   = geo.properties.nam;
     const isRaced    = racedPrefectures.has(topoName);
@@ -77,7 +67,7 @@ function PrefectureGeographies({ geographies, selected, onSelect, onHover, onHov
   });
 }
 
-function Tooltip({ tooltip }) {
+function Tooltip({ tooltip, racesByPrefecture }) {
   if (!tooltip || !SUPPORTS_HOVER) return null;
   const { name, x, y } = tooltip;
   const prefRaces = racesByPrefecture[name] || [];
@@ -110,19 +100,40 @@ function Tooltip({ tooltip }) {
   );
 }
 
-export default function JapanMap({ selected, onSelect }) {
+export default function JapanMap({ selected, onSelect, showSelfSupported }) {
   const [tooltip, setTooltip] = React.useState(null);
+
+  const filteredRaces = React.useMemo(
+    () => races.filter(r => showSelfSupported || r.eventType !== 'self-supported'),
+    [showSelfSupported]
+  );
+
+  const racedPrefectures = React.useMemo(
+    () => new Set(filteredRaces.map(r => toTopoName(r.prefecture))),
+    [filteredRaces]
+  );
+
+  const racesByPrefecture = React.useMemo(
+    () => filteredRaces.reduce((acc, r) => {
+      (acc[r.prefecture] = acc[r.prefecture] || []).push(r);
+      return acc;
+    }, {}),
+    [filteredRaces]
+  );
+
+  const raceCount       = filteredRaces.length;
+  const prefectureCount = new Set(filteredRaces.map(r => r.prefecture)).size;
 
   const handleHover    = (name, x, y) => setTooltip({ name, x, y });
   const handleMove     = (x, y) => setTooltip(t => t ? { ...t, x, y } : null);
   const handleHoverEnd = () => setTooltip(null);
 
-  const sharedProps = { selected, onSelect, onHover: handleHover, onMove: handleMove, onHoverEnd: handleHoverEnd };
+  const sharedProps = { selected, onSelect, onHover: handleHover, onMove: handleMove, onHoverEnd: handleHoverEnd, racedPrefectures };
   const okinawaIsRaced = racedPrefectures.has('Okinawa Ken');
 
   return (
     <>
-      <Tooltip tooltip={tooltip} />
+      <Tooltip tooltip={tooltip} racesByPrefecture={racesByPrefecture} />
       <div style={{ position: 'relative', width: '100%', maxWidth: 860, overflow: 'hidden' }}>
 
         {/* Main map — all prefectures except Okinawa */}
@@ -154,8 +165,8 @@ export default function JapanMap({ selected, onSelect }) {
           pointerEvents: 'none',
         }}>
           {[
-            { value: RACE_COUNT,                      label: 'races' },
-            { value: `${PREFECTURE_COUNT} / 47`,      label: 'prefectures' },
+            { value: raceCount,                    label: 'races' },
+            { value: `${prefectureCount} / 47`,    label: 'prefectures' },
           ].map(({ value, label }) => (
             <div key={label} style={{ marginBottom: '0.75rem' }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700, color: COLOR_RACED, lineHeight: 1.1 }}>
