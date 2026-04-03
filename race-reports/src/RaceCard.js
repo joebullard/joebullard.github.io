@@ -1,5 +1,6 @@
 import * as React from 'react';
 import AspectRatio from '@mui/joy/AspectRatio';
+import Box from '@mui/joy/Box';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import CardOverflow from '@mui/joy/CardOverflow';
@@ -45,12 +46,33 @@ export default function RaceCard({
       <CardOverflow sx={{ position: 'relative' }}>
         <AspectRatio ratio="16/9" sx={{ transition: 'transform 0.25s', '&:hover': { transform: 'scale(1.02)' } }}>
           <a href={googlePhotosLink || undefined} target="_blank" rel="noreferrer">
-            <img
-              src={coverPhoto}
-              loading="lazy"
-              alt={nameEn}
-              style={{ width: '100%', height: '100%', cursor: googlePhotosLink ? 'pointer' : 'default' }}
-            />
+            {coverPhoto ? (
+              <img
+                src={coverPhoto}
+                loading="lazy"
+                alt={nameEn}
+                style={{ width: '100%', height: '100%', cursor: googlePhotosLink ? 'pointer' : 'default' }}
+              />
+            ) : (
+              <Box
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  background: 'linear-gradient(160deg, #5b8db8 0%, #3d6b52 100%)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 0.5,
+                  cursor: googlePhotosLink ? 'pointer' : 'default',
+                }}
+              >
+                <span style={{ fontSize: '2rem', opacity: 0.6 }}>⛰</span>
+                <Typography level="body-xs" sx={{ color: 'rgba(255,255,255,0.6)', letterSpacing: '0.05em' }}>
+                  No Photo
+                </Typography>
+              </Box>
+            )}
           </a>
         </AspectRatio>
         <Chip
