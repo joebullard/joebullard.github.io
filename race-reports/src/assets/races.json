@@ -194,7 +194,7 @@
     "ascent": 0,
     "result": "off-course 28km",
     "status": "DNF",
-    "coverPhoto": "/race-reports/placeholder.png",
+    "coverPhoto": null,
     "googlePhotosLink": "https://photos.app.goo.gl/sfPPiQjTP8pPBBwK6"
   },
   {
@@ -339,7 +339,7 @@
     "ascent": 11000,
     "result": "TBD",
     "status": "Upcoming",
-    "coverPhoto": "/race-reports/placeholder.png",
+    "coverPhoto": null,
     "googlePhotosLink": "",
     "itraPoints": 6,
     "itraLink": "https://itra.run/Races/RaceDetails/Tokyo.Grand.Trail.100mile/2026/100353"
