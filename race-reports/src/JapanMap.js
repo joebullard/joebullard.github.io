@@ -100,12 +100,25 @@ function Tooltip({ tooltip, racesByPrefecture }) {
   );
 }
 
-export default function JapanMap({ selected, onSelect, showSelfSupported }) {
+function applyFilters(races, { showSelfSupported, showMarathons, showUltras }) {
+  return races.filter(r => {
+    const dist = r.raceDistance;
+    const isMarathon = dist >= 40 && dist < 45;
+    const isUltra = dist >= 45;
+    if (!showSelfSupported && r.eventType === 'self-supported') return false;
+    if (!showMarathons && isMarathon) return false;
+    if (!showUltras && isUltra) return false;
+    return true;
+  });
+}
+
+export default function JapanMap({ selected, onSelect, filters }) {
   const [tooltip, setTooltip] = React.useState(null);
 
   const filteredRaces = React.useMemo(
-    () => races.filter(r => showSelfSupported || r.eventType !== 'self-supported'),
-    [showSelfSupported]
+    () => applyFilters(races, filters),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [filters.showSelfSupported, filters.showMarathons, filters.showUltras]
   );
 
   const racedPrefectures = React.useMemo(
