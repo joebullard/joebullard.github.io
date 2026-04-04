@@ -7,7 +7,7 @@ import RaceGrid from './RaceGrid';
 
 function App() {
   const [selectedPrefecture, setSelectedPrefecture] = React.useState(null);
-  const [showSelfSupported, setShowSelfSupported] = React.useState(false);
+  const [showSelfSupported, setShowSelfSupported] = React.useState(true);
   const [showMarathons, setShowMarathons] = React.useState(true);
   const [showUltras, setShowUltras] = React.useState(true);
 
