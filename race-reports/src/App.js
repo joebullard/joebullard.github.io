@@ -1,6 +1,5 @@
 import React from 'react';
 import Stack from '@mui/joy/Stack';
-import Switch from '@mui/joy/Switch';
 import Typography from '@mui/joy/Typography';
 import JapanMap from './JapanMap';
 import RaceGrid from './RaceGrid';
@@ -21,39 +20,14 @@ function App() {
           ? `Races in ${selectedPrefecture} — click again to show all`
           : 'Click a highlighted prefecture to filter races'}
       </Typography>
-      <JapanMap selected={selectedPrefecture} onSelect={setSelectedPrefecture} filters={filters} />
-      <Stack direction="row" spacing={3} sx={{ flexWrap: 'wrap', justifyContent: 'center', rowGap: 1 }}>
-        <Switch
-          size="sm"
-          checked={showMarathons}
-          onChange={e => setShowMarathons(e.target.checked)}
-          endDecorator={
-            <Typography level="body-xs" textColor="text.secondary">
-              Include marathons
-            </Typography>
-          }
-        />
-        <Switch
-          size="sm"
-          checked={showUltras}
-          onChange={e => setShowUltras(e.target.checked)}
-          endDecorator={
-            <Typography level="body-xs" textColor="text.secondary">
-              Include ultras
-            </Typography>
-          }
-        />
-        <Switch
-          size="sm"
-          checked={showSelfSupported}
-          onChange={e => setShowSelfSupported(e.target.checked)}
-          endDecorator={
-            <Typography level="body-xs" textColor="text.secondary">
-              Include self-supported runs
-            </Typography>
-          }
-        />
-      </Stack>
+      <JapanMap
+        selected={selectedPrefecture}
+        onSelect={setSelectedPrefecture}
+        filters={filters}
+        showMarathons={showMarathons} setShowMarathons={setShowMarathons}
+        showUltras={showUltras}       setShowUltras={setShowUltras}
+        showSelfSupported={showSelfSupported} setShowSelfSupported={setShowSelfSupported}
+      />
       <RaceGrid prefectureFilter={selectedPrefecture} filters={filters} />
     </Stack>
   );

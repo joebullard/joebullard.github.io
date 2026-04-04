@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
+import Switch from '@mui/joy/Switch';
+import Typography from '@mui/joy/Typography';
 import races from './assets/races.json';
 
 const GEO_URL = `${process.env.PUBLIC_URL}/japan.topojson`;
@@ -112,7 +114,7 @@ function applyFilters(races, { showSelfSupported, showMarathons, showUltras }) {
   });
 }
 
-export default function JapanMap({ selected, onSelect, filters }) {
+export default function JapanMap({ selected, onSelect, filters, showMarathons, setShowMarathons, showUltras, setShowUltras, showSelfSupported, setShowSelfSupported }) {
   const [tooltip, setTooltip] = React.useState(null);
 
   const filteredRaces = React.useMemo(
@@ -171,7 +173,7 @@ export default function JapanMap({ selected, onSelect, filters }) {
         {/* Stats overlay — sits in the right-side whitespace above the Okinawa inset */}
         <div style={{
           position: 'absolute',
-          bottom: '27%',
+          bottom: '44%',
           right: '2%',
           width: '24%',
           textAlign: 'center',
@@ -189,6 +191,35 @@ export default function JapanMap({ selected, onSelect, filters }) {
                 {label}
               </div>
             </div>
+          ))}
+        </div>
+
+        {/* Filter toggles overlay — sits between stats and Okinawa inset */}
+        <div style={{
+          position: 'absolute',
+          bottom: '27%',
+          right: '2%',
+          width: '24%',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 6,
+        }}>
+          {[
+            { label: 'Marathons', checked: showMarathons, onChange: setShowMarathons },
+            { label: 'Ultras',    checked: showUltras,    onChange: setShowUltras    },
+            { label: 'Self-supported', checked: showSelfSupported, onChange: setShowSelfSupported },
+          ].map(({ label, checked, onChange }) => (
+            <Switch
+              key={label}
+              size="sm"
+              checked={checked}
+              onChange={e => onChange(e.target.checked)}
+              endDecorator={
+                <Typography level="body-xs" textColor="text.secondary">
+                  {label}
+                </Typography>
+              }
+            />
           ))}
         </div>
 
