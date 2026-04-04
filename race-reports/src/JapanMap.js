@@ -197,11 +197,12 @@ export default function JapanMap({ selected, onSelect, filters, showMarathons, s
         {/* Filter toggles overlay — sits above stats in the right-side whitespace */}
         <div style={{
           position: 'absolute',
-          bottom: '44%',
+          bottom: '55%',
           right: '2%',
           width: '24%',
           display: 'flex',
           flexDirection: 'column',
+          alignItems: 'flex-start',
           gap: 6,
         }}>
           {[
