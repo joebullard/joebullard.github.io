@@ -173,7 +173,7 @@ export default function JapanMap({ selected, onSelect, filters, showMarathons, s
         {/* Stats overlay — sits in the right-side whitespace above the Okinawa inset */}
         <div style={{
           position: 'absolute',
-          bottom: '44%',
+          bottom: '27%',
           right: '2%',
           width: '24%',
           textAlign: 'center',
@@ -194,10 +194,10 @@ export default function JapanMap({ selected, onSelect, filters, showMarathons, s
           ))}
         </div>
 
-        {/* Filter toggles overlay — sits between stats and Okinawa inset */}
+        {/* Filter toggles overlay — sits above stats in the right-side whitespace */}
         <div style={{
           position: 'absolute',
-          bottom: '27%',
+          bottom: '44%',
           right: '2%',
           width: '24%',
           display: 'flex',
