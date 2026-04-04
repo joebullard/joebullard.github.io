@@ -198,8 +198,7 @@ export default function JapanMap({ selected, onSelect, filters, showMarathons, s
         <div style={{
           position: 'absolute',
           bottom: '55%',
-          right: '2%',
-          width: '24%',
+          right: '3%',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
