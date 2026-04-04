@@ -3,13 +3,25 @@ import Box from '@mui/joy/Box';
 import RaceCard from './RaceCard';
 import races from './assets/races.json';
 
-export default function RaceGrid({ prefectureFilter, showSelfSupported }) {
-  const filtered = (prefectureFilter
-    ? races.filter(race => race.prefecture === prefectureFilter)
-    : [...races]
-  )
-    .filter(race => showSelfSupported || race.eventType !== 'self-supported')
-    .reverse();
+function applyFilters(races, { showSelfSupported, showMarathons, showUltras }) {
+  return races.filter(race => {
+    const dist = race.raceDistance;
+    const isMarathon = dist >= 40 && dist < 45;
+    const isUltra = dist >= 45;
+    if (!showSelfSupported && race.eventType === 'self-supported') return false;
+    if (!showMarathons && isMarathon) return false;
+    if (!showUltras && isUltra) return false;
+    return true;
+  });
+}
+
+export default function RaceGrid({ prefectureFilter, filters }) {
+  const filtered = applyFilters(
+    prefectureFilter
+      ? races.filter(race => race.prefecture === prefectureFilter)
+      : [...races],
+    filters,
+  ).reverse();
 
   return (
     <Box
