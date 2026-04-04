@@ -205,8 +205,8 @@ export default function JapanMap({ selected, onSelect, filters, showMarathons, s
           gap: 6,
         }}>
           {[
-            { label: 'Marathons', checked: showMarathons, onChange: setShowMarathons },
             { label: 'Ultras',    checked: showUltras,    onChange: setShowUltras    },
+            { label: 'Marathons', checked: showMarathons, onChange: setShowMarathons },
           ].map(({ label, checked, onChange }) => (
             <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Switch
