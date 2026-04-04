@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
+import Switch from '@mui/joy/Switch';
+import Typography from '@mui/joy/Typography';
 import races from './assets/races.json';
 
 const GEO_URL = `${process.env.PUBLIC_URL}/japan.topojson`;
@@ -112,7 +114,7 @@ function applyFilters(races, { showSelfSupported, showMarathons, showUltras }) {
   });
 }
 
-export default function JapanMap({ selected, onSelect, filters }) {
+export default function JapanMap({ selected, onSelect, filters, showMarathons, setShowMarathons, showUltras, setShowUltras }) {
   const [tooltip, setTooltip] = React.useState(null);
 
   const filteredRaces = React.useMemo(
@@ -188,6 +190,33 @@ export default function JapanMap({ selected, onSelect, filters }) {
               <div style={{ fontSize: '0.65rem', color: '#888', marginTop: 2 }}>
                 {label}
               </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Filter toggles overlay — sits above stats in the right-side whitespace */}
+        <div style={{
+          position: 'absolute',
+          bottom: '55%',
+          right: '3%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          gap: 6,
+        }}>
+          {[
+            { label: 'Marathons', checked: showMarathons, onChange: setShowMarathons },
+            { label: 'Ultras',    checked: showUltras,    onChange: setShowUltras    },
+          ].map(({ label, checked, onChange }) => (
+            <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <Switch
+                size="sm"
+                checked={checked}
+                onChange={e => onChange(e.target.checked)}
+              />
+              <Typography level="body-xs" textColor="text.secondary">
+                {label}
+              </Typography>
             </div>
           ))}
         </div>
