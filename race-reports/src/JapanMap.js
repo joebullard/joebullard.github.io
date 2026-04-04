@@ -209,17 +209,16 @@ export default function JapanMap({ selected, onSelect, filters, showMarathons, s
             { label: 'Ultras',    checked: showUltras,    onChange: setShowUltras    },
             { label: 'Self-supported', checked: showSelfSupported, onChange: setShowSelfSupported },
           ].map(({ label, checked, onChange }) => (
-            <Switch
-              key={label}
-              size="sm"
-              checked={checked}
-              onChange={e => onChange(e.target.checked)}
-              endDecorator={
-                <Typography level="body-xs" textColor="text.secondary">
-                  {label}
-                </Typography>
-              }
-            />
+            <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <Switch
+                size="sm"
+                checked={checked}
+                onChange={e => onChange(e.target.checked)}
+              />
+              <Typography level="body-xs" textColor="text.secondary">
+                {label}
+              </Typography>
+            </div>
           ))}
         </div>
 
