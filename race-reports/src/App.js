@@ -6,11 +6,10 @@ import RaceGrid from './RaceGrid';
 
 function App() {
   const [selectedPrefecture, setSelectedPrefecture] = React.useState(null);
-  const [showSelfSupported, setShowSelfSupported] = React.useState(true);
   const [showMarathons, setShowMarathons] = React.useState(true);
   const [showUltras, setShowUltras] = React.useState(true);
 
-  const filters = { showSelfSupported, showMarathons, showUltras };
+  const filters = { showSelfSupported: true, showMarathons, showUltras };
 
   return (
     <Stack spacing={2} sx={{ alignItems: 'center', px: { xs: 1, sm: 2 }, py: 3 }}>
@@ -26,7 +25,6 @@ function App() {
         filters={filters}
         showMarathons={showMarathons} setShowMarathons={setShowMarathons}
         showUltras={showUltras}       setShowUltras={setShowUltras}
-        showSelfSupported={showSelfSupported} setShowSelfSupported={setShowSelfSupported}
       />
       <RaceGrid prefectureFilter={selectedPrefecture} filters={filters} />
     </Stack>

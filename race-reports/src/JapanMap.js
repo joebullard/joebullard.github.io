@@ -114,7 +114,7 @@ function applyFilters(races, { showSelfSupported, showMarathons, showUltras }) {
   });
 }
 
-export default function JapanMap({ selected, onSelect, filters, showMarathons, setShowMarathons, showUltras, setShowUltras, showSelfSupported, setShowSelfSupported }) {
+export default function JapanMap({ selected, onSelect, filters, showMarathons, setShowMarathons, showUltras, setShowUltras }) {
   const [tooltip, setTooltip] = React.useState(null);
 
   const filteredRaces = React.useMemo(
@@ -207,7 +207,6 @@ export default function JapanMap({ selected, onSelect, filters, showMarathons, s
           {[
             { label: 'Marathons', checked: showMarathons, onChange: setShowMarathons },
             { label: 'Ultras',    checked: showUltras,    onChange: setShowUltras    },
-            { label: 'Self-supported', checked: showSelfSupported, onChange: setShowSelfSupported },
           ].map(({ label, checked, onChange }) => (
             <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Switch
