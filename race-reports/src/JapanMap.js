@@ -194,11 +194,12 @@ export default function JapanMap({ selected, onSelect, filters, showMarathons, s
           ))}
         </div>
 
-        {/* Filter toggles overlay — sits in the left-side whitespace (ocean west of Japan) */}
+        {/* Filter toggles overlay — right whitespace on desktop, left whitespace on mobile */}
         <div style={{
           position: 'absolute',
-          top: '28%',
-          left: '3%',
+          ...(SUPPORTS_HOVER
+            ? { bottom: '55%', right: '3%' }
+            : { top: '28%',   left:  '3%' }),
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
