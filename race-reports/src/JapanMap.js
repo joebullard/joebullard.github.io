@@ -229,6 +229,9 @@ export default function JapanMap({ selected, onSelect, filters, showMarathons, s
             if (!okinawaIsRaced) return;
             onSelect(selected === 'Okinawa' ? null : 'Okinawa');
           }}
+          onMouseEnter={SUPPORTS_HOVER ? (evt) => handleHover('Okinawa', evt.clientX, evt.clientY) : undefined}
+          onMouseMove={SUPPORTS_HOVER  ? (evt) => handleMove(evt.clientX, evt.clientY) : undefined}
+          onMouseLeave={SUPPORTS_HOVER ? handleHoverEnd : undefined}
           style={{
             position: 'absolute',
             bottom: '3%',
