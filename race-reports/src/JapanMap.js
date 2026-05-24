@@ -102,25 +102,26 @@ function Tooltip({ tooltip, racesByPrefecture }) {
   );
 }
 
-function applyFilters(races, { showSelfSupported, showMarathons, showUltras }) {
+function applyFilters(races, { showSelfSupported, showMarathon, show50K, show50M, show100K, show100M }) {
   return races.filter(r => {
     const dist = r.raceDistance;
-    const isMarathon = dist >= 40 && dist < 45;
-    const isUltra = dist >= 45;
     if (!showSelfSupported && r.eventType === 'self-supported') return false;
-    if (!showMarathons && isMarathon) return false;
-    if (!showUltras && isUltra) return false;
+    if (!showMarathon && dist >= 35 && dist < 45) return false;
+    if (!show50K  && dist >= 45 && dist <  65) return false;
+    if (!show50M  && dist >= 65 && dist <  90) return false;
+    if (!show100K && dist >= 90 && dist < 130) return false;
+    if (!show100M && dist >= 130)              return false;
     return true;
   });
 }
 
-export default function JapanMap({ selected, onSelect, filters, showMarathons, setShowMarathons, showUltras, setShowUltras }) {
+export default function JapanMap({ selected, onSelect, filters, showMarathon, setShowMarathon, show50K, setShow50K, show50M, setShow50M, show100K, setShow100K, show100M, setShow100M }) {
   const [tooltip, setTooltip] = React.useState(null);
 
   const filteredRaces = React.useMemo(
     () => applyFilters(races, filters),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [filters.showSelfSupported, filters.showMarathons, filters.showUltras]
+    [filters.showSelfSupported, filters.showMarathon, filters.show50K, filters.show50M, filters.show100K, filters.show100M]
   );
 
   const racedPrefectures = React.useMemo(
@@ -206,8 +207,11 @@ export default function JapanMap({ selected, onSelect, filters, showMarathons, s
           gap: 6,
         }}>
           {[
-            { label: 'Ultras',    checked: showUltras,    onChange: setShowUltras    },
-            { label: 'Marathons', checked: showMarathons, onChange: setShowMarathons },
+            { label: 'Marathon (35-45km)',  checked: showMarathon, onChange: setShowMarathon },
+            { label: '50K (45-64km)',       checked: show50K,      onChange: setShow50K      },
+            { label: '50M (65-89km)',       checked: show50M,      onChange: setShow50M      },
+            { label: '100K (90-129km)',     checked: show100K,     onChange: setShow100K     },
+            { label: '100M (130+km)',       checked: show100M,     onChange: setShow100M     },
           ].map(({ label, checked, onChange }) => (
             <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Switch
