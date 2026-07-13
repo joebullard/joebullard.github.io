@@ -339,9 +339,39 @@
     "ascent": 11000,
     "result": "DNF",
     "status": "DNF",
-    "coverPhoto": null,
-    "googlePhotosLink": null,
+    "coverPhoto": "https://lh3.googleusercontent.com/pw/AP1GczP3psXP-cNcOfSxLO0XNhsu6kiHGQlNFm_4bSv1N9sfC6Q5JW5E2O1AufVXbsckyvuxAzsdS0D6N4CGhJKNm9aOBhsVv6F_TfUB2v0E2jZl2y0lkD5vf-XQY5SOOUCziXT5NrJIXHoEsVP4ma6r24Nq=w447-h447-s-no-gm?authuser=0",
+    "googlePhotosLink": "https://photos.app.goo.gl/JDg6UNT3h1KzzB7K9",
     "itraPoints": 6,
     "itraLink": "https://itra.run/Races/RaceDetails/Tokyo.Grand.Trail.100mile/2026/100353"
+  },
+  {
+    "id": "2026-08-yatsushiro-dragon-trail",
+    "eventType": "organized",
+    "prefecture": "Kumamoto",
+    "nameJa": "やっちろドラゴントレイル",
+    "nameEn": "Yatsushiro Dragon Trail",
+    "date": "2026.08.29",
+    "raceDistance": 64,
+    "coveredDistance": 0,
+    "ascent": 4300,
+    "result": "TBD",
+    "status": "Upcoming",
+    "coverPhoto": "/race-reports/placeholder.png",
+    "googlePhotosLink": ""
+  },
+  {
+    "id": "2026-09-flash-trail-challenge-rokko",
+    "eventType": "organized",
+    "prefecture": "Hyogo",
+    "nameJa": "Flash Trail Challenge 2026 Autumn",
+    "nameEn": "Flash Trail Challenge 2026 Autumn (Rokko)",
+    "date": "2026.09.26",
+    "raceDistance": 80,
+    "coveredDistance": 0,
+    "ascent": 3900,
+    "result": "TBD",
+    "status": "Upcoming",
+    "coverPhoto": "/race-reports/placeholder.png",
+    "googlePhotosLink": ""
   }
 ]
